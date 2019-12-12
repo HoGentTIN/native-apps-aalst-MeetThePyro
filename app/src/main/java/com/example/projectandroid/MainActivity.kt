@@ -1,0 +1,22 @@
+package com.example.projectandroid
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.example.projectandroid.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.login_fragment.*
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupWithNavController(binding.navView, navController)
+    }
+}
