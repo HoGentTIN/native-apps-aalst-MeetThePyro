@@ -5,6 +5,6 @@
         android:id="@+id/login"
         android:title="LoginFragmentTesting" />
     <item
-        android:id="@+id/review"
-        android:title="" />
+        android:id="@+id/reviewFragment"
+        android:title="ReviewTesting" />
 </menu>

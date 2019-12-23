@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -25,16 +28,20 @@ class Login : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val navigationDrawer = activity!!.findViewById<DrawerLayout>(R.id.drawerLayout)
         val binding = DataBindingUtil.inflate<LoginFragmentBinding>(inflater,
             R.layout.login_fragment, container, false)
 
         binding.btnLogin.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_login_to_homeFragment)
+            navigationDrawer.setDrawerLockMode(LOCK_MODE_UNLOCKED)
         }
         binding.linkSignup.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_login_to_register)
         }
 
+
+        navigationDrawer.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
         return binding.root
     }
 
