@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.projectandroid.databinding.LoginFragmentBinding
-import kotlinx.android.synthetic.main.login_fragment.*
 
 class Login : Fragment() {
 
@@ -28,7 +27,8 @@ class Login : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val navigationDrawer = activity!!.findViewById<DrawerLayout>(R.id.drawerLayout)
+
+        val navigationDrawer = activity!!.findViewById<DrawerLayout>(R.id.drawer_layout)
         val binding = DataBindingUtil.inflate<LoginFragmentBinding>(inflater,
             R.layout.login_fragment, container, false)
 
@@ -42,6 +42,10 @@ class Login : Fragment() {
 
 
         navigationDrawer.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
+
+        //(activity as AppCompatActivity).supportActionBar?.
+
+
         return binding.root
     }
 

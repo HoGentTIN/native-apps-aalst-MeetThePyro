@@ -28,8 +28,9 @@ class GameOverviewFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
+        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v2").readText()
 
-        val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json").readText()
+        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json").readText()
     }
 
 }
