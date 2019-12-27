@@ -9,6 +9,8 @@
             android:id="@+id/reviewFragment"
             android:title="ReviewTesting" />
     </group>
+    <item android:title="gameOverview"
+        android:id="@+id/gameOverviewFragment"></item>
     <item android:title="TODO"/>
 
 

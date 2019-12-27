@@ -34,4 +34,8 @@
         android:id="@+id/reviewFragment"
         android:name="com.example.projectandroid.ReviewFragment"
         android:label="ReviewFragment" />
+    <fragment
+        android:id="@+id/gameOverviewFragment"
+        android:name="com.example.projectandroid.GameOverviewFragment"
+        android:label="GameOverviewFragment" />
 </navigation>
