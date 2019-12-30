@@ -5,11 +5,12 @@ import java.util.*
 
 
 data class Game(
-    //var id:Int,
     @field:Json(name = "appid")
     var appid:Int,
     @field:Json(name = "name")
-    var name:String
-    //var desc:String
+    var name:String,
+    var developer: String,
+    var publisher: String
+
 )
 
