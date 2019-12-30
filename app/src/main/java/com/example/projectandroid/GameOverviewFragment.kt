@@ -6,12 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.projectandroid.data.adapters.GameAdapter
-import com.example.projectandroid.data.adapters.GameListAdapter
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
-import com.example.projectandroid.databinding.LoginFragmentBinding
 import com.example.projectandroid.model.Game
 //import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
 import java.net.URL

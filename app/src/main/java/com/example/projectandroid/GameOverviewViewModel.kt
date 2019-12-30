@@ -3,20 +3,12 @@ package com.example.projectandroid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.projectandroid.data.adapters.GameListAdapter
 import com.example.projectandroid.data.network.GameApi
-import com.example.projectandroid.data.repository.GameRepository
 import com.example.projectandroid.model.Game
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.await
 
 enum class GameApiStatus { LOADING, ERROR, DONE }
 
