@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.example.projectandroid.data.adapters.GameAdapter
+import com.example.projectandroid.data.adapters.GameListAdapter
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.databinding.LoginFragmentBinding
 import com.example.projectandroid.model.Game
@@ -40,11 +42,17 @@ class GameOverviewFragment : Fragment() {
 
         binding.gameViewModel = viewModel
 
+        val adapter = GameAdapter()
+        binding.gameListView.adapter = adapter
+
+        viewModel.properties.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                adapter.data = it
+            }
+        })
 
 
-        //var test = URL("https://steamspy.com/api.php?request=top100forever").readText()
-//var test: String
-//test = getJsonFromURL("https://steamspy.com/api.php?request=top100forever")
+
 
     //viewModel.games.observe(this, Observer {
 
@@ -63,15 +71,6 @@ class GameOverviewFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
-
-
-
-        //binding
-
-
-        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v2").readText()
-
-        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json").readText()
     }*/
 
 

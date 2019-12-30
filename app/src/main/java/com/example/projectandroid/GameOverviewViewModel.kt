@@ -3,6 +3,7 @@ package com.example.projectandroid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.projectandroid.data.adapters.GameListAdapter
 import com.example.projectandroid.data.network.GameApi
 import com.example.projectandroid.data.repository.GameRepository
 import com.example.projectandroid.model.Game
@@ -34,6 +35,7 @@ class GameOverviewViewModel : ViewModel() {
     val properties: LiveData<List<Game>>
         get() = _properties
 
+
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
 
@@ -52,11 +54,12 @@ class GameOverviewViewModel : ViewModel() {
                 // Await the completion of our Retrofit request
                 var listResult = getPropertiesDeferred.await()
                 _status.value = GameApiStatus.DONE
-                _properties.value = listResult
+                _properties.value = listResult.values.toList()
+                //adapter = GameListAdapter(this, properties.value)
             } catch (e: Exception) {
                 val error = e.message
                 _status.value = GameApiStatus.ERROR
-                _properties.value = ArrayList()
+                //_properties.value = ArrayList()
             }
         }
     }
