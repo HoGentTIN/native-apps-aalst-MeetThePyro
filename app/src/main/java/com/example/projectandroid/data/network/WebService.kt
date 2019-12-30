@@ -23,8 +23,8 @@ import javax.net.ssl.X509TrustManager
 
 private const val BASE_URL_GAMES = "https://steamspy.com/api.php?request="
 
-private val moshi = Moshi.Builder().
-    add(KotlinJsonAdapterFactory())
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
     .add(NULL_TO_EMPTY_STRING_ADAPTER)
     .add(DateAdapter)
     .build()
