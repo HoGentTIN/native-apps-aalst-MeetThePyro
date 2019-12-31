@@ -1,5 +1,6 @@
 package com.example.projectandroid
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,4 +55,5 @@ class Login : Fragment() {
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
 }

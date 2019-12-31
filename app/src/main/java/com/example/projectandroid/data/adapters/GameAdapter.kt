@@ -24,6 +24,7 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
         holder.gameName.text = item.name
         holder.gameDev.text = "Developer: " + item.developer
         holder.gamePublisher.text = "Publisher: " + item.publisher
+        holder.appid.text = item.appid.toString()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,9 +34,21 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
         return ViewHolder(view)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    var onItemClick: ((pos: Int, view: View) -> Unit)? = null
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         val gameName: TextView = itemView.findViewById(R.id.game_name)
         val gameDev: TextView = itemView.findViewById(R.id.game_dev)
         val gamePublisher: TextView = itemView.findViewById(R.id.game_publisher)
+        val appid: TextView = itemView.findViewById(R.id.game_appid)
+        override fun onClick(v: View){
+            onItemClick?.invoke(adapterPosition, v)
+        }
+
+        init {
+            itemView.setOnClickListener(this)
+        }
     }
+
+
 }

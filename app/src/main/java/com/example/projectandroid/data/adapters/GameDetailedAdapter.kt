@@ -28,8 +28,6 @@ class GameDetailedAdapter: RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>(
         holder.gameDesc.text = item.short_description
         Picasso.get().load(item.header_image).into(holder.gameImg)
         holder.gameSite.text = item.website
-        //holder.gameDev.text = "Developer: " + item.developer
-        //holder.gamePublisher.text = "Publisher: " + item.publisher
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,12 +37,16 @@ class GameDetailedAdapter: RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>(
         return ViewHolder(view)
     }
 
+
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val gameName: TextView = itemView.findViewById(R.id.game_detailed_name)
         val gameDesc: TextView = itemView.findViewById(R.id.game_detailed_desc)
         val gameSite: TextView = itemView.findViewById(R.id.game_detailed_website)
         val gameImg: ImageView = itemView.findViewById(R.id.game_detailed_img)
-        //val gameDev: TextView = itemView.findViewById(R.id.game_dev)
-        //val gamePublisher: TextView = itemView.findViewById(R.id.game_publisher)
     }
+
+
+
+
 }

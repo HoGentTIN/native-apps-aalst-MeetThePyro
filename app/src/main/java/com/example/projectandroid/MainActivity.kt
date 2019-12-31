@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity(){
 
     lateinit var toolbar: Toolbar
     lateinit var navView: NavigationView
+    lateinit var appid: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,14 @@ class MainActivity : AppCompatActivity(){
 
     fun setToolbarTitle(title:String){
         toolbar_title.text= title
+    }
+
+    fun selectGame(appid:String){
+        this.appid = appid
+        var viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        viewModel.setAppid(appid)
+        findNavController(R.id.myNavHostFragment).navigate(R.id.action_gameOverviewFragment_to_gameFragment)
+
     }
 
 
