@@ -2,6 +2,8 @@ package com.example.projectandroid.data.network
 
 import com.example.projectandroid.model.Game
 import com.example.projectandroid.model.GameDetailed
+import com.example.projectandroid.model.GameDetailedWrapper
+import com.example.projectandroid.model.GameDetailedWrapper2
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -32,14 +34,14 @@ private val retrofit = Retrofit.Builder()
 
 interface SteamApiService{
     @GET("appdetails?appids=218620")
-    fun getGame(): Deferred<Map<String, GameDetailed>>
+    fun getGame(): Deferred<Map<String, GameDetailedWrapper2>>
 
 }
 
 
 
 object SteamApi {
-    val retrofitService: GameApiService by lazy {
-        retrofit.create(GameApiService::class.java)
+    val retrofitService: SteamApiService by lazy {
+        retrofit.create(SteamApiService::class.java)
     }
 }

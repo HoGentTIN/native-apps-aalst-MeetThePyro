@@ -1,17 +1,14 @@
 package com.example.projectandroid
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.projectandroid.data.adapters.GameAdapter
-import com.example.projectandroid.databinding.GameOverviewFragmentBinding
-import kotlinx.android.synthetic.main.game_fragment.game_detailed_desc
+import androidx.lifecycle.ViewModelProviders
+import com.example.projectandroid.data.adapters.GameDetailedAdapter
+import com.example.projectandroid.databinding.GameFragmentBinding
 
 
 class GameFragment : Fragment() {
@@ -26,15 +23,16 @@ class GameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as MainActivity).setToolbarTitle("Game")
         val binding = GameFragmentBinding.inflate(inflater)
 
         binding.setLifecycleOwner(this)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
-        binding.gameViewModel = viewModel
+        binding.gameDetailedViewModel = viewModel
 
-        val adapter = GameAdapter()
-        binding.gameListView.adapter = adapter
+        val adapter = GameDetailedAdapter()
+        binding.gameListDetailedView.adapter = adapter
 
         viewModel.properties.observe(viewLifecycleOwner, Observer {
             it?.let{
@@ -42,7 +40,7 @@ class GameFragment : Fragment() {
             }
         })
 
-        return binding
+        return binding.root
 
     }
 

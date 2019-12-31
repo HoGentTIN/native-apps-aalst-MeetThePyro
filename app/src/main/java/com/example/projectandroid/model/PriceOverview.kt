@@ -1,6 +1,6 @@
 package com.example.projectandroid.model
 
-data class PriceOverview(
+data class PriceOverview2(
     var currency:String,
     var initial: Int,
     var final: Int,
