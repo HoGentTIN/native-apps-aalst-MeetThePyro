@@ -38,4 +38,9 @@
         android:id="@+id/gameOverviewFragment"
         android:name="com.example.projectandroid.GameOverviewFragment"
         android:label="GameOverviewFragment" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.projectandroid.GameFragment"
+        android:label="game_fragment"
+        tools:layout="@layout/game_fragment" />
 </navigation>

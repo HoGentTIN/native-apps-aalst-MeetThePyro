@@ -1,12 +1,9 @@
 package com.example.projectandroid
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -14,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.projectandroid.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.content_main.toolbar_title
 
 class MainActivity : AppCompatActivity(){
 
@@ -52,14 +49,12 @@ class MainActivity : AppCompatActivity(){
         NavigationUI.setupWithNavController(binding.navView, navController)
 
 
-
-
-
-
-
-
-
     }
+
+    fun setToolbarTitle(title:String){
+        toolbar_title.text= title
+    }
+
 
 
     //override fun onSupportNavigateUp(): Boolean {

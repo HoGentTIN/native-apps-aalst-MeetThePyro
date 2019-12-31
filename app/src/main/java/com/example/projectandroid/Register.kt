@@ -23,6 +23,7 @@ class Register : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as MainActivity).setToolbarTitle("Register")
         val binding = DataBindingUtil.inflate<RegisterFragmentBinding>(inflater,
             R.layout.register_fragment, container, false)
 

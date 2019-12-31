@@ -1,11 +1,21 @@
 package com.example.projectandroid
 
-import androidx.lifecycle.ViewModelProviders
+//import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
+
+import android.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.example.projectandroid.data.adapters.GameAdapter
+import com.example.projectandroid.databinding.GameOverviewFragmentBinding
+import com.example.projectandroid.model.Game
+import kotlinx.android.synthetic.main.content_main.toolbar_title
+import kotlinx.android.synthetic.main.content_main.view.toolbar_title
 import java.net.URL
 
 
@@ -17,20 +27,53 @@ class GameOverviewFragment : Fragment() {
 
     private lateinit var viewModel: GameOverviewViewModel
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.game_overview_fragment, container, false)
+        (activity as MainActivity).setToolbarTitle("Top 100 Games")
+        var _games: List<Game>
+        //return inflater.inflate(R.layout.game_overview_fragment, container, false)
+        //val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
+        //    R.layout.game_overview_fragment, container, false)
+
+        val binding = GameOverviewFragmentBinding.inflate(inflater)
+        binding.setLifecycleOwner(this)
+        viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
+
+        binding.gameViewModel = viewModel
+
+        val adapter = GameAdapter()
+        binding.gameListView.adapter = adapter
+
+        viewModel.properties.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                adapter.data = it
+            }
+        })
+
+
+
+
+
+
+    //viewModel.games.observe(this, Observer {
+
+    //})
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+     fun getJsonFromURL(wantedURL: String) : String {
+        return URL(wantedURL).readText()
+    }
+
+    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
-        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v2").readText()
+    }*/
 
-        //val result = URL("http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json").readText()
-    }
 
 }
