@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameDetailedAdapter
 import com.example.projectandroid.databinding.GameFragmentBinding
+import kotlinx.android.synthetic.main.list_item_games.game_appid
 
 
 class GameFragment : Fragment() {
@@ -24,10 +25,13 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as MainActivity).setToolbarTitle("Game")
+
         val binding = GameFragmentBinding.inflate(inflater)
 
         binding.setLifecycleOwner(this)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        /*var test = (activity as MainActivity).appid
+        viewModel.setAppid((activity as MainActivity).appid)*/
 
         binding.gameDetailedViewModel = viewModel
 
@@ -48,6 +52,9 @@ class GameFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         // TODO: Use the ViewModel
+            //var test = (activity as MainActivity).appid
+            //viewModel.setAppid((activity as MainActivity).appid)
+
 
 
     }

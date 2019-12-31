@@ -18,7 +18,7 @@ enum class SteamApiStatus { LOADING, ERROR, DONE }
 class GameViewModel : ViewModel() {
     private val _response = MutableLiveData<String>()
     private val _status = MutableLiveData<SteamApiStatus>()
-    private var _appid: String = ""
+    private var _appid: String = "218620"
 
     //private var gameRepository: GameRepository = GameRepository()
 
@@ -38,17 +38,18 @@ class GameViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
+
         getGame()
+
     }
 
-    private fun getGame() {
+    fun getGame() {
         coroutineScope.launch {
+            Thread.sleep(1000)
             // Get the Deferred object for our Retrofit request
-            while (_appid =="") {
-
-            }
             //var getPropertiesDeferred = SteamApi.retrofitService.getGame("218620")
-            var getPropertiesDeferred = SteamApi.retrofitService.getGame()
+            var getPropertiesDeferred = SteamApi.retrofitService.getGame(_appid)
+            //var getPropertiesDeferred = SteamApi.retrofitService.getGame()
             try {
                 // Await the completion of our Retrofit request
                 var listResult = getPropertiesDeferred.await()
@@ -74,5 +75,9 @@ class GameViewModel : ViewModel() {
 
     fun setAppid(appid: String) {
         this._appid = appid
+    }
+
+    fun getAppid(): String {
+        return this._appid
     }
 }

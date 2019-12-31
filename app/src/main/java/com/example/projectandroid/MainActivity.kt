@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.projectandroid.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main.toolbar_title
+import kotlinx.android.synthetic.main.list_item_games.game_appid
 
 class MainActivity : AppCompatActivity(){
 
@@ -60,10 +61,19 @@ class MainActivity : AppCompatActivity(){
     fun selectGame(appid:String){
         this.appid = appid
         var viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        viewModel.setAppid(appid)
+        //viewModel.setAppid(game_appid.text.toString())
+        //viewModel.setAppid(this.appid)
+
         findNavController(R.id.myNavHostFragment).navigate(R.id.action_gameOverviewFragment_to_gameFragment)
+        //viewModel.setAppid(this.appid)
+        //viewModel.getGame(this.appid)
 
     }
+
+    fun getTheId():String{
+        return appid
+    }
+
 
 
 

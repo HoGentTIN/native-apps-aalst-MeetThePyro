@@ -54,7 +54,10 @@ class GameOverviewFragment : Fragment() {
         binding.gameListView.adapter = adapter
 
         adapter.onItemClick = { pos, view ->
+
             _appid = view.game_appid.text.toString()
+            val bundle = Bundle()
+            bundle.putString("appid", _appid)
             (activity as MainActivity).selectGame(_appid)
         }
 
