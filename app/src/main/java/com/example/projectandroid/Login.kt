@@ -27,7 +27,7 @@ class Login : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as MainActivity).setToolbarTitle("Login")
         val navigationDrawer = activity!!.findViewById<DrawerLayout>(R.id.drawer_layout)
         val binding = DataBindingUtil.inflate<LoginFragmentBinding>(inflater,
             R.layout.login_fragment, container, false)

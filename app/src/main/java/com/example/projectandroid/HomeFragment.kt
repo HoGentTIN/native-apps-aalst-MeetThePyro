@@ -21,6 +21,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as MainActivity).setToolbarTitle("Home")
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 

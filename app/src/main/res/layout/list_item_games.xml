@@ -8,7 +8,8 @@
     android:layout_marginVertical="4dp"
     android:clickable="true"
     android:focusable="true"
-    style="@style/Widget.MaterialComponents.CardView">
+    style="@style/Widget.MaterialComponents.CardView"
+    app:cardBackgroundColor="@color/colorAccent">
 
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
@@ -25,29 +26,32 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Game Name" />
 
-    <TextView
-        android:id="@+id/game_dev"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_name"
-        tools:text="GameDev" />
+       <TextView
+           android:id="@+id/game_dev"
+           android:layout_width="0dp"
+           android:layout_height="20dp"
+           android:layout_marginStart="8dp"
+           android:layout_marginTop="8dp"
+           android:layout_marginBottom="8dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toStartOf="@+id/guideline"
+           app:layout_constraintHorizontal_bias="0.0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/game_name"
+           tools:text="GameDev" />
 
-    <TextView
-        android:id="@+id/game_publisher"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/game_dev"
-        app:layout_constraintTop_toTopOf="@+id/game_dev"
-        tools:text="Publisher" />
+       <TextView
+           android:id="@+id/game_publisher"
+           android:layout_width="0dp"
+           android:layout_height="20dp"
+           android:layout_marginStart="8dp"
+           android:layout_marginEnd="8dp"
+           app:layout_constraintBottom_toBottomOf="@+id/game_dev"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.5"
+           app:layout_constraintStart_toEndOf="@+id/game_dev"
+           app:layout_constraintTop_toTopOf="@+id/game_dev"
+           tools:text="Publisher" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

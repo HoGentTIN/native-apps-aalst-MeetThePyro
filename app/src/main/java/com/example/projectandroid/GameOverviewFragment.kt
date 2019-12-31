@@ -1,16 +1,21 @@
 package com.example.projectandroid
 
-import androidx.lifecycle.ViewModelProviders
+//import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
+
+import android.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
-//import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
+import kotlinx.android.synthetic.main.content_main.toolbar_title
+import kotlinx.android.synthetic.main.content_main.view.toolbar_title
 import java.net.URL
 
 
@@ -28,6 +33,7 @@ class GameOverviewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as MainActivity).setToolbarTitle("Top 100 Games")
         var _games: List<Game>
         //return inflater.inflate(R.layout.game_overview_fragment, container, false)
         //val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
@@ -51,12 +57,11 @@ class GameOverviewFragment : Fragment() {
 
 
 
+
+
     //viewModel.games.observe(this, Observer {
 
     //})
-
-
-
         return binding.root
     }
 
