@@ -51,7 +51,7 @@ data class Data(
     //val packages: List<Int>,
     //val pc_requirements: PcRequirements,
     //val platforms: Platforms,
-    //val price_overview: PriceOverview?,
+    val price_overview: PriceOverview?,
     val publishers: List<String>?,
     //val recommendations: Recommendations,
     //val release_date: ReleaseDate,

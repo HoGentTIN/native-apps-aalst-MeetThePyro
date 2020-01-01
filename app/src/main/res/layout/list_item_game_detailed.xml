@@ -39,7 +39,7 @@
             android:autoLink="web"
             android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/game_detailed_name"
+            app:layout_constraintStart_toStartOf="@+id/game_detailed_dev"
             app:layout_constraintTop_toBottomOf="@+id/game_detailed_dev"
             tools:text="Website" />
 
@@ -85,7 +85,7 @@
             android:fillViewport="true"
             android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/game_detailed_website"
             app:layout_constraintTop_toBottomOf="@+id/divider2">
 
             <TextView
@@ -138,13 +138,12 @@
             android:id="@+id/game_detailed_dev"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            tools:text="Gamedev"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50V"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_detailed_name" />
+            app:layout_constraintStart_toStartOf="@+id/game_detailed_name"
+            app:layout_constraintTop_toBottomOf="@+id/game_detailed_name"
+            tools:text="Gamedev" />
 
         <TextView
             android:id="@+id/game_detailed_publisher"
@@ -156,6 +155,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline_50V"
             app:layout_constraintTop_toTopOf="@+id/game_detailed_dev" />
+
+        <TextView
+            android:id="@+id/game_detailed_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Price: "
+            app:layout_constraintStart_toStartOf="@+id/SCROLLER_ID"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <TextView
+            android:id="@+id/game_detailed_steamLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="Link to steam"
+            android:autoLink="web"
+            app:layout_constraintStart_toStartOf="@+id/game_detailed_price"
+            app:layout_constraintTop_toBottomOf="@+id/game_detailed_price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -63,6 +63,16 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
             holder.gamePublisher.text = context.getString(R.string.publisher_missing)
         }
 
+        var _price = item.price_overview?.final_formatted
+        if (!isEmpty(_price)){
+            holder.gamePrice.text = context.getString(R.string.game_price, item.price_overview?.final_formatted)
+        } else {
+            holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.free_unavailable))
+        }
+        holder.gameSteamLink.text = context.getString(R.string.steam_link, item.steam_appid.toString())
+
+
+
 
 
 
@@ -82,6 +92,8 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         val gameDesc: TextView = itemView.findViewById(R.id.game_detailed_desc)
         val gameDev: TextView = itemView.findViewById(R.id.game_detailed_dev)
         val gamePublisher: TextView = itemView.findViewById(R.id.game_detailed_publisher)
+        val gamePrice: TextView = itemView.findViewById(R.id.game_detailed_price)
+        val gameSteamLink: TextView = itemView.findViewById(R.id.game_detailed_steamLink)
         val gameSite: TextView = itemView.findViewById(R.id.game_detailed_website)
         val gameImg: ImageView = itemView.findViewById(R.id.game_detailed_img)
     }
