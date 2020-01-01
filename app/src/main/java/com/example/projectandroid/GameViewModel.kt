@@ -74,7 +74,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun setAppid(appid: String) {
-        this._appid = appid
+        _appid = appid
     }
 
     fun getAppid(): String {

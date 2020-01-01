@@ -33,6 +33,8 @@ class GameFragment : Fragment() {
         /*var test = (activity as MainActivity).appid
         viewModel.setAppid((activity as MainActivity).appid)*/
 
+        viewModel.setAppid((activity as MainActivity).appid)
+
         binding.gameDetailedViewModel = viewModel
 
         val adapter = GameDetailedAdapter()

@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.content_main.toolbar_title
 import kotlinx.android.synthetic.main.list_item_games.game_appid
 
 class MainActivity : AppCompatActivity(){
+    companion object {
+        var globalVar =""
+    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
@@ -60,6 +63,7 @@ class MainActivity : AppCompatActivity(){
 
     fun selectGame(appid:String){
         this.appid = appid
+        globalVar = appid
         var viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         //viewModel.setAppid(game_appid.text.toString())
         //viewModel.setAppid(this.appid)

@@ -13,21 +13,35 @@ import com.example.projectandroid.model.GameDetailed
 import com.squareup.picasso.Picasso
 import java.net.URI
 
-class GameDetailedAdapter: RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>() {
+class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>() {
     var data = listOf<Data>()
-        set(value){
+        set(value) {
             field = value
             notifyDataSetChanged()
         }
+
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         val res = holder.itemView.resources
         holder.gameName.text = item.name
-        holder.gameDesc.text = item.short_description
+        if (!isEmpty(item.short_description)) {
+            holder.gameDesc.text = item.short_description
+        } else {
+            holder.gameDesc.text = "Short description is not available"
+        }
+
         Picasso.get().load(item.header_image).into(holder.gameImg)
+
+
         holder.gameSite.text = item.website
+
+        if (!isEmpty(item.website)) {
+            holder.gameSite.text = item.website
+        } else {
+            holder.gameSite.text = "Website is not available"
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,15 +52,16 @@ class GameDetailedAdapter: RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>(
     }
 
 
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val gameName: TextView = itemView.findViewById(R.id.game_detailed_name)
         val gameDesc: TextView = itemView.findViewById(R.id.game_detailed_desc)
         val gameSite: TextView = itemView.findViewById(R.id.game_detailed_website)
         val gameImg: ImageView = itemView.findViewById(R.id.game_detailed_img)
     }
 
-
+    fun isEmpty(input: String?): Boolean {
+        return (input == null || input == "")
+    }
 
 
 }

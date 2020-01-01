@@ -41,6 +41,7 @@ class GameOverviewViewModel : ViewModel() {
 
     private fun getTop100() {
         coroutineScope.launch {
+
             // Get the Deferred object for our Retrofit request
             var getPropertiesDeferred = GameApi.retrofitService.getTop100()
             try {

@@ -67,6 +67,8 @@ class GameOverviewFragment : Fragment() {
             }
         })
 
+
+
        /* binding.gameListView.game_card.setOnClickListener {
                 view: View ->
             (activity as MainActivity).selectGame()

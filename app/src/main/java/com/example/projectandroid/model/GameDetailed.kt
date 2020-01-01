@@ -57,12 +57,12 @@ data class Data(
     //val release_date: ReleaseDate,
     //val required_age: String,
     //val screenshots: List<Screenshot>,
-    val short_description: String,
+    val short_description: String?,
     val steam_appid: Int,
     //val support_info: SupportInfo,
     //val supported_languages: String,
     //val type: String,
-    val website: String
+    val website: String?
 )
 
 data class Achievements(
