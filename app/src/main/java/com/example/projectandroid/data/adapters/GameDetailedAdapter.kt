@@ -42,6 +42,28 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         } else {
             holder.gameSite.text = "Website is not available"
         }
+
+        /*if(item.developers?.size != null && item.developers.isNotEmpty()) {
+            holder.gameDev.text = item.developers.joinToString { "," }
+        } else {
+            holder.gameDev.text = "No developers available"
+        }*/
+
+        if(!isListEmpty(item.developers)){
+            holder.gameDev.text = "Developer: " + listToString(item.developers)
+        } else {
+            holder.gameDev.text = "No developers available"
+        }
+
+        if(!isListEmpty(item.publishers)){
+            holder.gamePublisher.text = "Publisher: " + listToString(item.publishers)
+        } else {
+            holder.gamePublisher.text = "No publishers available"
+        }
+
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -55,12 +77,22 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val gameName: TextView = itemView.findViewById(R.id.game_detailed_name)
         val gameDesc: TextView = itemView.findViewById(R.id.game_detailed_desc)
+        val gameDev: TextView = itemView.findViewById(R.id.game_detailed_dev)
+        val gamePublisher: TextView = itemView.findViewById(R.id.game_detailed_publisher)
         val gameSite: TextView = itemView.findViewById(R.id.game_detailed_website)
         val gameImg: ImageView = itemView.findViewById(R.id.game_detailed_img)
     }
 
     fun isEmpty(input: String?): Boolean {
         return (input == null || input == "")
+    }
+
+    fun isListEmpty(input: List<String>?): Boolean{
+        return (input?.size == null || input.isEmpty())
+    }
+
+    fun listToString(input: List<String>?): String{
+        return input.toString()!!.removePrefix("[").removeSuffix("]")
     }
 
 
