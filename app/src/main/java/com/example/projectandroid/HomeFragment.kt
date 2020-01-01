@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.home_fragment.home_getTop_btn
+import kotlinx.android.synthetic.main.home_fragment.home_timeSpan_switch
 
 class HomeFragment : Fragment() {
 
@@ -20,6 +24,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as MainActivity).setToolbarTitle("Home")
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
@@ -27,5 +32,18 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
+        home_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // The switch is enabled/checked
+                (activity as MainActivity).request = "top100in2weeks"
+            } else {
+                // The switch is disabled
+                (activity as MainActivity).request = "top100forever"
+            }
+        }
+
+        home_getTop_btn.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_gameOverviewFragment)
+        }
     }
 }

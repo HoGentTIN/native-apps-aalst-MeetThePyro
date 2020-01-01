@@ -1,22 +1,90 @@
 package com.example.projectandroid
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.projectandroid.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.login_fragment.*
+import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.content_main.toolbar_title
+import kotlinx.android.synthetic.main.list_item_games.game_appid
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
+    companion object {
+        var globalVar =""
+    }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navController: NavController
+
+    lateinit var toolbar: Toolbar
+    lateinit var navView: NavigationView
+    lateinit var appid: String
+    var request: String = "top100forever"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val navController = this.findNavController(R.id.myNavHostFragment)
+
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+
+
+        drawerLayout = binding.drawerLayout
+        navView = binding.navView
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0, 0
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        //navView.setNavigationItemSelectedListener(this)
+
+        navController = this.findNavController(R.id.myNavHostFragment)
+
+
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
+
     }
+
+    fun setToolbarTitle(title:String){
+        toolbar_title.text= title
+    }
+
+    fun selectGame(appid:String){
+        this.appid = appid
+        globalVar = appid
+        var viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        //viewModel.setAppid(game_appid.text.toString())
+        //viewModel.setAppid(this.appid)
+
+        findNavController(R.id.myNavHostFragment).navigate(R.id.action_gameOverviewFragment_to_gameFragment)
+        //viewModel.setAppid(this.appid)
+        //viewModel.getGame(this.appid)
+
+    }
+
+    fun getTheId():String{
+        return appid
+    }
+
+
+
+
+    //override fun onSupportNavigateUp(): Boolean {
+    //   val navController = this.findNavController(R.id.myNavHostFragment)
+    //   return NavigationUI.navigateUp(navController, drawerLayout)
+    //}
+
 }
