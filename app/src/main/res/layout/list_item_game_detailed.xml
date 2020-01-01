@@ -174,5 +174,14 @@
             app:layout_constraintStart_toStartOf="@+id/game_detailed_price"
             app:layout_constraintTop_toBottomOf="@+id/game_detailed_price" />
 
+        <TextView
+            android:id="@+id/game_detailed_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="onSale?"
+            app:layout_constraintStart_toEndOf="@+id/game_detailed_price"
+            app:layout_constraintTop_toTopOf="@+id/game_detailed_price" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

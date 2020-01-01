@@ -3,6 +3,8 @@ package com.example.projectandroid.data.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -71,6 +73,19 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         }
         holder.gameSteamLink.text = context.getString(R.string.steam_link, item.steam_appid.toString())
 
+        var _discount = item.price_overview?.discount_percent
+        if (_discount != null && _discount >0){
+            holder.gamePriceDiscount.visibility = VISIBLE
+            holder.gamePriceDiscount.text = context.getString(R.string.game_discount, _discount)
+        } else {
+            holder.gamePriceDiscount.visibility = GONE
+        }
+
+
+
+
+
+
 
 
 
@@ -93,6 +108,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         val gameDev: TextView = itemView.findViewById(R.id.game_detailed_dev)
         val gamePublisher: TextView = itemView.findViewById(R.id.game_detailed_publisher)
         val gamePrice: TextView = itemView.findViewById(R.id.game_detailed_price)
+        val gamePriceDiscount: TextView = itemView.findViewById(R.id.game_detailed_sale)
         val gameSteamLink: TextView = itemView.findViewById(R.id.game_detailed_steamLink)
         val gameSite: TextView = itemView.findViewById(R.id.game_detailed_website)
         val gameImg: ImageView = itemView.findViewById(R.id.game_detailed_img)

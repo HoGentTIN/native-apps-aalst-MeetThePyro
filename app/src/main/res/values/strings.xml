@@ -7,6 +7,7 @@
     <string name="dev_missing">Developer is not available</string>
     <string name="publisher_missing">Publisher is not available</string>
     <string name="game_price">Price: %1$s</string>
+    <string name="game_discount"> | Currently %1$d%% off!</string>
     <string name="free_unavailable">Free or unavailable</string>
     <string name="steam_link">Find it on steam: https://store.steampowered.com/app/%1$s</string>
 
