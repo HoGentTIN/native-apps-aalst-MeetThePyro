@@ -3,22 +3,23 @@
 
     <group>
         <item
-            android:id="@+id/login"
-            android:title="LoginFragmentTesting" />
+            android:title="Home"
+            android:id="@id/homeFragment"/>
         <item
-            android:id="@+id/reviewFragment"
-            android:title="ReviewTesting" />
+            android:title="Top 100 Games"
+            android:id="@+id/gameOverviewFragment" />
+
+
     </group>
+
+    <group>
     <item
-        android:title="Top 100 | All Time"
-        android:id="@+id/gameOverviewFragment" />
+        android:id="@+id/login"
+        android:title="LoginFragmentTesting" />
     <item
-        android:title="Top 100 | 7 Days"
-        android:id="@+id/gameOverView7DayFragment" />
-    <item
-        android:title="gameFragment"
-        android:id="@+id/gameFragment" />
-    <item android:title="TODO"/>
+        android:id="@+id/reviewFragment"
+        android:title="ReviewTesting" />
+    </group>
 
 
 </menu>
