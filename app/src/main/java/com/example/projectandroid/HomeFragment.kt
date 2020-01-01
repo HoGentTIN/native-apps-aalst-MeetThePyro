@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.home_fragment.home_timeSpan_switch
 
 class HomeFragment : Fragment() {
 
@@ -29,7 +30,14 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
-
-
+        home_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // The switch is enabled/checked
+                (activity as MainActivity).request = "top100in2weeks"
+            } else {
+                // The switch is disabled
+                (activity as MainActivity).request = "top100forever"
+            }
+        }
     }
 }

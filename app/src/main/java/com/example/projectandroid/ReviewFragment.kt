@@ -28,7 +28,7 @@ class ReviewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ReviewViewModel::class.java)
-        reviewText.movementMethod = ScrollingMovementMethod();
+        reviewText.movementMethod = ScrollingMovementMethod()
         // TODO: Use the ViewModel
     }
 }
