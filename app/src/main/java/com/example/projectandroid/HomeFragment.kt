@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.home_fragment.home_getTop_btn
 import kotlinx.android.synthetic.main.home_fragment.home_timeSpan_switch
 
 class HomeFragment : Fragment() {
@@ -38,6 +40,10 @@ class HomeFragment : Fragment() {
                 // The switch is disabled
                 (activity as MainActivity).request = "top100forever"
             }
+        }
+
+        home_getTop_btn.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_gameOverviewFragment)
         }
     }
 }
