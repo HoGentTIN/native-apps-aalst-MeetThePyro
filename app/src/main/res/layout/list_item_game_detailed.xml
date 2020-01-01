@@ -132,7 +132,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_50H" />
+            app:layout_constraintTop_toBottomOf="@+id/SCROLLER_ID" />
 
         <TextView
             android:id="@+id/game_detailed_dev"
