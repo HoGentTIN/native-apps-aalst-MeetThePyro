@@ -24,9 +24,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:text="Timespan"
-            android:textOff="Forever"
-            android:textOn="7 Days"
+            android:text="@string/timespan"
+            android:textOff="@string/timepsan_forever"
+            android:textOn="@string/timespan_week"
             app:showText="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:autoLink="web"
-            android:text='Welcome. Here you can get a list of the top 100 games on steam, both in the last seven days, and forever'
+            android:text="@string/welcome_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
@@ -52,7 +52,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:padding="12dp"
-            android:text="blame pence"
+            android:text="@string/top_100_btnText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

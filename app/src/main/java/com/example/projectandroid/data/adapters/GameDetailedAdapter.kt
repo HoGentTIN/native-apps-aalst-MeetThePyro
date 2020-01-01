@@ -1,5 +1,6 @@
 package com.example.projectandroid.data.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,17 +9,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectandroid.R
 import com.example.projectandroid.model.Data
-import com.example.projectandroid.model.Game
-import com.example.projectandroid.model.GameDetailed
 import com.squareup.picasso.Picasso
-import java.net.URI
+import java.security.AccessController.getContext
 
 class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>() {
+    private lateinit var context: Context
     var data = listOf<Data>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
 
     override fun getItemCount() = data.size
 
@@ -28,8 +29,9 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         holder.gameName.text = item.name
         if (!isEmpty(item.short_description)) {
             holder.gameDesc.text = item.short_description
+
         } else {
-            holder.gameDesc.text = "Short description is not available"
+            holder.gameDesc.text = context.getString(R.string.short_desc_missing)
         }
 
         Picasso.get().load(item.header_image).into(holder.gameImg)
@@ -40,7 +42,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         if (!isEmpty(item.website)) {
             holder.gameSite.text = item.website
         } else {
-            holder.gameSite.text = "Website is not available"
+            holder.gameSite.text = context.getString(R.string.website_missing)
         }
 
         /*if(item.developers?.size != null && item.developers.isNotEmpty()) {
@@ -50,15 +52,15 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         }*/
 
         if(!isListEmpty(item.developers)){
-            holder.gameDev.text = "Developer: " + listToString(item.developers)
+            holder.gameDev.text = context.getString(R.string.dev, listToString(item.developers))
         } else {
-            holder.gameDev.text = "No developers available"
+            holder.gameDev.text = context.getString(R.string.dev_missing)
         }
 
         if(!isListEmpty(item.publishers)){
-            holder.gamePublisher.text = "Publisher: " + listToString(item.publishers)
+            holder.gamePublisher.text = context.getString(R.string.publisher, listToString(item.publishers))
         } else {
-            holder.gamePublisher.text = "No publishers available"
+            holder.gamePublisher.text = context.getString(R.string.publisher_missing)
         }
 
 
@@ -67,6 +69,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
             .inflate(R.layout.list_item_game_detailed, parent, false)

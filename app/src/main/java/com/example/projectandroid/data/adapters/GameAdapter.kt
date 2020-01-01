@@ -1,16 +1,17 @@
 package com.example.projectandroid.data.adapters
 
-import android.text.Layout
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectandroid.R
-import com.example.projectandroid.TextItemViewHolder
 import com.example.projectandroid.model.Game
 
+
 class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+    private lateinit var context: Context
     var data = listOf<Game>()
         set(value){
             field = value
@@ -22,12 +23,16 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
         val item = data[position]
         val res = holder.itemView.resources
         holder.gameName.text = item.name
-        holder.gameDev.text = "Developer: " + item.developer
-        holder.gamePublisher.text = "Publisher: " + item.publisher
+
+        //val test = getString(R.string.dev, item.developer);
+
+        holder.gameDev.text = context.getString(R.string.dev, item.developer)
+        holder.gamePublisher.text = context.getString(R.string.publisher, item.publisher)
         holder.appid.text = item.appid.toString()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
             .inflate(R.layout.list_item_games, parent, false)

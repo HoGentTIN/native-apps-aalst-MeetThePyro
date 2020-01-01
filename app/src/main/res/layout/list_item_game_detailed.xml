@@ -141,7 +141,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Gamedev"
+            tools:text="Gamedev"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50V"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/game_detailed_name" />
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="GamePub"
+            tools:text="GamePub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline_50V"
             app:layout_constraintTop_toTopOf="@+id/game_detailed_dev" />
