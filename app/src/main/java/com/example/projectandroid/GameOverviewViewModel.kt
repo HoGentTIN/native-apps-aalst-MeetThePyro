@@ -17,7 +17,7 @@ class GameOverviewViewModel : ViewModel() {
     private val _response = MutableLiveData<String>()
     private val _status = MutableLiveData<GameApiStatus>()
     private var _appid = String
-    private var _request = "top100forever"
+    private var _request = ""
 
     //private var gameRepository: GameRepository = GameRepository()
 
@@ -37,14 +37,14 @@ class GameOverviewViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        getTop100()
+        getTop100(_request)
     }
 
-    private fun getTop100() {
+    fun getTop100(request:String) {
         coroutineScope.launch {
 
             // Get the Deferred object for our Retrofit request
-            var getPropertiesDeferred = GameApi.retrofitService.getTop100(_request)
+            var getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
             try {
                 // Await the completion of our Retrofit request
                 var listResult = getPropertiesDeferred.await()
@@ -66,6 +66,10 @@ class GameOverviewViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun setRequest(request: String){
+        _request = request
     }
 
     /* private suspend fun getTop100Games(){

@@ -2,24 +2,17 @@ package com.example.projectandroid
 
 //import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
-import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.content_main.toolbar_title
-import kotlinx.android.synthetic.main.content_main.view.toolbar_title
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
-import kotlinx.android.synthetic.main.list_item_games.view.game_card
 import java.net.URL
 
 
@@ -30,7 +23,6 @@ class GameOverviewFragment : Fragment() {
     }
 
     private lateinit var viewModel: GameOverviewViewModel
-
 
 
     override fun onCreateView(
@@ -50,6 +42,18 @@ class GameOverviewFragment : Fragment() {
 
         binding.gameViewModel = viewModel
 
+        var request = (activity as MainActivity).request
+        if(request == "top100forever"){
+            (activity as MainActivity).setToolbarTitle("Top 100 Games | Forever")
+        } else if(request == "top100in2weeks") {
+            (activity as MainActivity).setToolbarTitle("Top 100 Games | 2 Weeks")
+        } else {
+            (activity as MainActivity).setToolbarTitle("Error")
+        }
+
+        viewModel.setRequest((activity as MainActivity).request)
+        viewModel.getTop100((activity as MainActivity).request)
+
         val adapter = GameAdapter()
         binding.gameListView.adapter = adapter
 
@@ -62,26 +66,21 @@ class GameOverviewFragment : Fragment() {
         }
 
         viewModel.properties.observe(viewLifecycleOwner, Observer {
-            it?.let{
+            it?.let {
                 adapter.data = it
             }
         })
 
 
-
-       /* binding.gameListView.game_card.setOnClickListener {
+        /* binding.gameListView.game_card.setOnClickListener {
                 view: View ->
             (activity as MainActivity).selectGame()
         }*/
 
 
+        //viewModel.games.observe(this, Observer {
 
-
-
-
-    //viewModel.games.observe(this, Observer {
-
-    //})
+        //})
         return binding.root
     }
 
@@ -89,15 +88,24 @@ class GameOverviewFragment : Fragment() {
     //    view?.findNavController().navigate(R.id.)
     //}
 
-    fun getJsonFromURL(wantedURL: String) : String {
+    fun getJsonFromURL(wantedURL: String): String {
         return URL(wantedURL).readText()
     }
 
-    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
-    }*/
+        /*overview_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // The switch is enabled/checked
+                viewModel.getTop100("topbork")
+            } else {
+                // The switch is disabled
+                viewModel.getTop100("top100forever")
+            }
+        }*/
 
 
+    }
 }

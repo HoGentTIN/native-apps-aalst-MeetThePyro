@@ -10,8 +10,11 @@
             android:title="ReviewTesting" />
     </group>
     <item
-        android:title="gameOverview"
+        android:title="Top 100 | All Time"
         android:id="@+id/gameOverviewFragment" />
+    <item
+        android:title="Top 100 | 7 Days"
+        android:id="@+id/gameOverView7DayFragment" />
     <item
         android:title="gameFragment"
         android:id="@+id/gameFragment" />

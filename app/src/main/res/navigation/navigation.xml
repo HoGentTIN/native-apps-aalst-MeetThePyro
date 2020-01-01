@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/login">
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.projectandroid.HomeFragment"
@@ -47,4 +47,13 @@
         android:name="com.example.projectandroid.GameFragment"
         android:label="game_fragment"
         tools:layout="@layout/game_fragment" />
+    <fragment
+        android:id="@+id/gameOverView7DayFragment"
+        android:name="com.example.projectandroid.GameOverView7DayFragment"
+        android:label="game_over_view7_day_fragment"
+        tools:layout="@layout/game_over_view7_day_fragment" >
+        <action
+            android:id="@+id/action_gameOverView7DayFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
 </navigation>
