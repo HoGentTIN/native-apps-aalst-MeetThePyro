@@ -32,6 +32,11 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
+        if ((activity as MainActivity).request == "top100in2weeks"){
+            home_timeSpan_switch.isChecked = true
+        } else {
+            home_timeSpan_switch.isChecked = false
+        }
         home_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 // The switch is enabled/checked
