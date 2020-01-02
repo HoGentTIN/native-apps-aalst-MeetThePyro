@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'org.jetbrains.dokka'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     dataBinding {
         enabled = true
@@ -29,6 +31,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            testCoverageEnabled true
+        }
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostName:"internal.example.com"]
+            applicationIdSuffix ".debugStaging"
+        }
+
     }
 }
 
@@ -78,7 +91,7 @@ dependencies {
 
     //room
     implementation "androidx.room:room-runtime:2.2.3"
-    annotationProcessor "androidx.room:room-compiler:2.2.3"
+    kapt "androidx.room:room-compiler:2.2.3"
 
 
 }

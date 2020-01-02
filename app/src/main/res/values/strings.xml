@@ -18,7 +18,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="timespan">Timespan</string>
     <string name="timepsan_forever">Forever</string>
-    <string name="timespan_week">7 Days</string>
+    <string name="timespan_2weeks">2 Weeks</string>
     <string name="welcome_text">Welcome. Here you can get a list of the top 100 games on steam, both in the last seven days, and forever</string>
     <string name="top_100_btnText">Get Top 100</string>
 

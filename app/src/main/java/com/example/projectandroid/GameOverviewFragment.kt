@@ -2,6 +2,8 @@ package com.example.projectandroid
 
 //import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameAdapter
+import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
@@ -36,9 +39,24 @@ class GameOverviewFragment : Fragment() {
         //val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
         //    R.layout.game_overview_fragment, container, false)
 
+        val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (cm.activeNetwork != null) {
+            var test = "test"
+        } else {
+            var test = "test2"
+        }
+
+
+
         val binding = GameOverviewFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
-        viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
+        val viewModelFactory = GameOverviewViewModelFactory(dataSource, application, cm)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(GameOverviewViewModel::class.java)
 
         binding.gameViewModel = viewModel
 
@@ -96,6 +114,7 @@ class GameOverviewFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
+
         /*overview_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 // The switch is enabled/checked
