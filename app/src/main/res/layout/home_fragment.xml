@@ -33,7 +33,6 @@
             android:id="@+id/home_timeSpan_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:textOff="@string/timepsan_forever"
             android:textOn="@string/timespan_2weeks"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -41,7 +40,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_33V"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:showText="false"
-            app:switchMinWidth="100dp"/>
+            app:switchMinWidth="100dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -71,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/home_timeSpan_switch"></com.google.android.material.button.MaterialButton>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/home_timespan_forever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -83,7 +82,7 @@
             app:layout_constraintTop_toTopOf="@+id/home_timeSpan_switch" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/home_timespan_2weeks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/timespan_2weeks"
