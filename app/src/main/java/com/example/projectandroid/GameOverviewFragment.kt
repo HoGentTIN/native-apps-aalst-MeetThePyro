@@ -43,7 +43,13 @@ class GameOverviewFragment : Fragment() {
             val safeArgs = GameOverviewFragmentArgs.fromBundle(it)
             request = safeArgs.request
         }
-        (activity as MainActivity).setToolbarTitle("Top 100 Games | $request")
+        var timespan = ""
+        timespan = if (request == "top100in2weeks") {
+            context!!.getString(R.string.timespan_2weeks)
+        } else {
+            context!!.getString(R.string.timepsan_forever)
+        }
+        (activity as MainActivity).setToolbarTitle(context!!.getString(R.string.top_100_title, timespan))
         var _appid: String
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
