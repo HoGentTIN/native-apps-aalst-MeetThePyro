@@ -35,9 +35,6 @@ class GameOverviewFragment : Fragment() {
     ): View? {
         (activity as MainActivity).setToolbarTitle("Top 100 Games")
         var _appid: String
-        // return inflater.inflate(R.layout.game_overview_fragment, container, false)
-        // val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
-        //    R.layout.game_overview_fragment, container, false)
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -80,24 +77,7 @@ class GameOverviewFragment : Fragment() {
                 adapter.data = it
             }
         })
-
-        /* binding.gameListView.game_card.setOnClickListener {
-                view: View ->
-            (activity as MainActivity).selectGame()
-        }*/
-
-        // viewModel.games.observe(this, Observer {
-
-        // })
         return binding.root
-    }
-
-    // private fun selectGame(gameCard: MaterialCardView?) {
-    //    view?.findNavController().navigate(R.id.)
-    // }
-
-    fun getJsonFromURL(wantedURL: String): String {
-        return URL(wantedURL).readText()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -111,15 +91,5 @@ class GameOverviewFragment : Fragment() {
         } else {
             gameList_offline.visibility = VISIBLE
         }
-
-        /*overview_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                // The switch is enabled/checked
-                viewModel.getTop100("topbork")
-            } else {
-                // The switch is disabled
-                viewModel.getTop100("top100forever")
-            }
-        }*/
     }
 }

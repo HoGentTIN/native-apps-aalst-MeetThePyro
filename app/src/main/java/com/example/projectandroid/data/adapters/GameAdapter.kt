@@ -20,11 +20,8 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        val res = holder.itemView.resources
+        //val res = holder.itemView.resources
         holder.gameName.text = item.name
-
-        // val test = getString(R.string.dev, item.developer);
-
         holder.gameDev.text = context.getString(R.string.dev, item.developer)
         holder.gamePublisher.text = context.getString(R.string.publisher, item.publisher)
         holder.appid.text = item.appid.toString()

@@ -43,11 +43,7 @@ class HomeFragment : Fragment() {
         if (cm.activeNetwork != null) {
             home_no_network.visibility = GONE
             home_timeSpan_switch.isEnabled = true
-            if ((activity as MainActivity).request == "top100in2weeks") {
-                home_timeSpan_switch.isChecked = true
-            } else {
-                home_timeSpan_switch.isChecked = false
-            }
+            home_timeSpan_switch.isChecked = (activity as MainActivity).request == "top100in2weeks"
         } else {
             home_no_network.visibility = VISIBLE
             home_timeSpan_switch.isChecked = false

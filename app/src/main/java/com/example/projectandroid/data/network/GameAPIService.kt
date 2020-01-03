@@ -14,7 +14,6 @@ import retrofit2.http.Query
 private const val BASE_URL_GAMES = "https://steamspy.com/"
 
 private val moshi = Moshi.Builder()
-    // .add(ResponseGetGamesAdapter())
     .add(KotlinJsonAdapterFactory())
     .build()
 

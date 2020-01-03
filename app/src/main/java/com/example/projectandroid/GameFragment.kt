@@ -14,6 +14,7 @@ import com.example.projectandroid.databinding.GameFragmentBinding
 import kotlinx.android.synthetic.main.game_fragment.game_detailed_offline
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.home_fragment.home_no_network
+import kotlinx.android.synthetic.main.list_item_game_detailed.game_detailed_name
 
 class GameFragment : Fragment() {
 
@@ -34,8 +35,6 @@ class GameFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        /*var test = (activity as MainActivity).appid
-        viewModel.setAppid((activity as MainActivity).appid)*/
 
         viewModel.setAppid((activity as MainActivity).appid)
 
@@ -64,8 +63,5 @@ class GameFragment : Fragment() {
         } else {
             game_detailed_offline.visibility = View.VISIBLE
         }
-
-        // var test = (activity as MainActivity).appid
-            // viewModel.setAppid((activity as MainActivity).appid)
     }
 }

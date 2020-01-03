@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        // navView.setNavigationItemSelectedListener(this)
 
         navController = this.findNavController(R.id.myNavHostFragment)
 

@@ -42,25 +42,15 @@ class GameOverviewViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
-        // getTop100(_request)
-    }
-
     fun getTop100(request: String) {
 
         coroutineScope.launch {
-            /* while (cm.activeNetwork == null){
-                 _properties.value = getTop100FromDatabase()
-             }*/
-
             if (cm.activeNetwork == null) {
                 // var test = getTop100FromDatabase()
                 _properties.value = getTop100FromDatabase()
             } else {
                 getTop100FromApi(request)
             }
-
-            // getTop100FromApi(request)
         }
     }
 
@@ -89,7 +79,6 @@ class GameOverviewViewModel(
                     }
                 }
             } catch (e: Exception) {
-                val error = e.message
                 _status.value = GameApiStatus.ERROR
             }
     }
@@ -112,33 +101,4 @@ class GameOverviewViewModel(
     fun setRequest(request: String) {
         _request = request
     }
-
-    /* private suspend fun getTop100Games(){
-         //_response.value = "Set the API response here!"
-         GameApi.retrofitService.getTop100().enqueue(
-             object: Callback<List<Game>> {
-                 override fun onFailure(call: Call<List<Game>>, t: Throwable) {
-                     _response.value = "Failure: " + t.message
-                 }
-
-                 override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
-                     _response.value = "Success: ${response.body()?.size} Games retrieved"
-                 }
-             })
-     }
- */
-
-    /* private val viewModelJob = SupervisorJob()
-     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-     init {
-         viewModelScope.launch {
-             try {
-                 gameRepository.getGames()
-             } catch (e: Exception) {
-
-             }
-         }
-     }
-
-     val games = gameRepository.games*/
 }

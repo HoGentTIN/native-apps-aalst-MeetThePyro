@@ -42,8 +42,6 @@ class Login : Fragment() {
 
         navigationDrawer.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
 
-        // (activity as AppCompatActivity).supportActionBar?.
-
         return binding.root
     }
 

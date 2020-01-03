@@ -54,12 +54,8 @@ class GameViewModel : ViewModel() {
                         _properties.value = listOf(firstGame)
                     }
                 }
-                // Await the completion of our Retrofit request
-
-
             } catch (e: Exception) {
                 _status.value = SteamApiStatus.ERROR
-                // _properties.value = ArrayList()
             }
         }
     }
@@ -77,7 +73,4 @@ class GameViewModel : ViewModel() {
         _appid = appid
     }
 
-    fun getAppid(): String {
-        return this._appid
-    }
 }

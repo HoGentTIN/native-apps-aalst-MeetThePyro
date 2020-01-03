@@ -16,16 +16,6 @@
     android:layout_height="match_parent"
     tools:context=".GameOverviewFragment">
 
-    <!--<com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{gameViewModel.properties.toString()}"
-        app:layout_constraintBottom_toBottomOf="@+id/gameList_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gameList_view"></com.google.android.material.textview.MaterialTextView>-->
-
-
     <TextView
         android:id="@+id/gameList_offline"
         android:layout_width="0dp"
@@ -45,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -55,16 +45,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameList_offline"
         app:layout_constraintVertical_bias="1.0" />
-
-    <!--<com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/overview_timeSpan_switch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Timespan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,7 +25,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        val res = holder.itemView.resources
+        //val res = holder.itemView.resources
         holder.gameName.text = item.name
         if (!isEmpty(item.short_description)) {
             holder.gameDesc.text = item.short_description
@@ -42,12 +42,6 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         } else {
             holder.gameSite.text = context.getString(R.string.website_missing)
         }
-
-        /*if(item.developers?.size != null && item.developers.isNotEmpty()) {
-            holder.gameDev.text = item.developers.joinToString { "," }
-        } else {
-            holder.gameDev.text = "No developers available"
-        }*/
 
         if (!isListEmpty(item.developers)) {
             holder.gameDev.text = context.getString(R.string.dev, listToString(item.developers))
