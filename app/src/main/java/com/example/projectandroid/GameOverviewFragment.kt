@@ -1,6 +1,6 @@
 package com.example.projectandroid
 
-//import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
+// import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -17,12 +17,9 @@ import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
-import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
-import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
-import kotlinx.android.synthetic.main.list_item_games.game_card
-import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 import java.net.URL
-
+import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
+import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 
 class GameOverviewFragment : Fragment() {
 
@@ -32,24 +29,19 @@ class GameOverviewFragment : Fragment() {
 
     private lateinit var viewModel: GameOverviewViewModel
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         (activity as MainActivity).setToolbarTitle("Top 100 Games")
         var _games: List<Game>
         var _appid: String
-        //return inflater.inflate(R.layout.game_overview_fragment, container, false)
-        //val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
+        // return inflater.inflate(R.layout.game_overview_fragment, container, false)
+        // val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
         //    R.layout.game_overview_fragment, container, false)
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-
-
-
-
 
         val binding = GameOverviewFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
@@ -63,9 +55,9 @@ class GameOverviewFragment : Fragment() {
         binding.gameViewModel = viewModel
 
         var request = (activity as MainActivity).request
-        if(request == "top100forever"){
+        if (request == "top100forever") {
             (activity as MainActivity).setToolbarTitle("Top 100 Games | Forever")
-        } else if(request == "top100in2weeks") {
+        } else if (request == "top100in2weeks") {
             (activity as MainActivity).setToolbarTitle("Top 100 Games | 2 Weeks")
         } else {
             (activity as MainActivity).setToolbarTitle("Error")
@@ -91,22 +83,20 @@ class GameOverviewFragment : Fragment() {
             }
         })
 
-
         /* binding.gameListView.game_card.setOnClickListener {
                 view: View ->
             (activity as MainActivity).selectGame()
         }*/
 
+        // viewModel.games.observe(this, Observer {
 
-        //viewModel.games.observe(this, Observer {
-
-        //})
+        // })
         return binding.root
     }
 
-    //private fun selectGame(gameCard: MaterialCardView?) {
+    // private fun selectGame(gameCard: MaterialCardView?) {
     //    view?.findNavController().navigate(R.id.)
-    //}
+    // }
 
     fun getJsonFromURL(wantedURL: String): String {
         return URL(wantedURL).readText()
@@ -120,7 +110,6 @@ class GameOverviewFragment : Fragment() {
 
         if (cm.activeNetwork != null) {
             gameList_offline.visibility = GONE
-
         } else {
             gameList_offline.visibility = VISIBLE
         }
@@ -134,7 +123,5 @@ class GameOverviewFragment : Fragment() {
                 viewModel.getTop100("top100forever")
             }
         }*/
-
-
     }
 }

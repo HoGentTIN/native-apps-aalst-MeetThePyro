@@ -1,6 +1,5 @@
 package com.example.projectandroid
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,11 +40,9 @@ class Login : Fragment() {
             view.findNavController().navigate(R.id.action_login_to_register)
         }
 
-
         navigationDrawer.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
 
-        //(activity as AppCompatActivity).supportActionBar?.
-
+        // (activity as AppCompatActivity).supportActionBar?.
 
         return binding.root
     }
@@ -55,5 +52,4 @@ class Login : Fragment() {
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }

@@ -13,11 +13,10 @@ import androidx.navigation.ui.NavigationUI
 import com.example.projectandroid.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main.toolbar_title
-import kotlinx.android.synthetic.main.list_item_games.game_appid
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     companion object {
-        var globalVar =""
+        var globalVar = ""
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity(){
 
         setSupportActionBar(toolbar)
 
-
         drawerLayout = binding.drawerLayout
         navView = binding.navView
 
@@ -47,44 +45,36 @@ class MainActivity : AppCompatActivity(){
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        //navView.setNavigationItemSelectedListener(this)
+        // navView.setNavigationItemSelectedListener(this)
 
         navController = this.findNavController(R.id.myNavHostFragment)
 
-
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
-
-
     }
 
-    fun setToolbarTitle(title:String){
-        toolbar_title.text= title
+    fun setToolbarTitle(title: String) {
+        toolbar_title.text = title
     }
 
-    fun selectGame(appid:String){
+    fun selectGame(appid: String) {
         this.appid = appid
         globalVar = appid
         var viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        //viewModel.setAppid(game_appid.text.toString())
-        //viewModel.setAppid(this.appid)
+        // viewModel.setAppid(game_appid.text.toString())
+        // viewModel.setAppid(this.appid)
 
         findNavController(R.id.myNavHostFragment).navigate(R.id.action_gameOverviewFragment_to_gameFragment)
-        //viewModel.setAppid(this.appid)
-        //viewModel.getGame(this.appid)
-
+        // viewModel.setAppid(this.appid)
+        // viewModel.getGame(this.appid)
     }
 
-    fun getTheId():String{
+    fun getTheId(): String {
         return appid
     }
 
-
-
-
-    //override fun onSupportNavigateUp(): Boolean {
+    // override fun onSupportNavigateUp(): Boolean {
     //   val navController = this.findNavController(R.id.myNavHostFragment)
     //   return NavigationUI.navigateUp(navController, drawerLayout)
-    //}
-
+    // }
 }

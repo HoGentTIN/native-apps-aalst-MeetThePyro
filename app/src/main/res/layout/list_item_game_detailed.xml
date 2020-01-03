@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         tools:context=".GameFragment">
 
+
         <ImageView
             android:id="@+id/game_detailed_img"
             android:layout_width="0dp"
@@ -17,7 +18,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/controller_logo_round" />
+            tools:src="@mipmap/controller_logo_round"
+            android:contentDescription="@string/game_image"/>
 
         <TextView
             android:id="@+id/game_detailed_name"

@@ -10,14 +10,13 @@ import java.util.*
 data class Game(
     @PrimaryKey
     @field:Json(name = "appid")
-    var appid:Int,
+    var appid: Int,
     @ColumnInfo(name = "name")
     @field:Json(name = "name")
-    var name:String,
+    var name: String,
     @ColumnInfo(name = "developer")
     var developer: String,
     @ColumnInfo(name = "publisher")
     var publisher: String
 
 )
-

@@ -7,17 +7,17 @@ import androidx.room.RoomDatabase
 import com.example.projectandroid.model.Game
 
 @Database(entities = [Game::class], version = 1, exportSchema = false)
-abstract class GameDatabase : RoomDatabase(){
+abstract class GameDatabase : RoomDatabase() {
     abstract val gameDatabaseDao: GameDatabaseDao
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: GameDatabase? = null
 
         fun getInstance(context: Context): GameDatabase {
-            synchronized(this){
+            synchronized(this) {
                 var instance = INSTANCE
-                if (instance == null){
+                if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         GameDatabase::class.java,

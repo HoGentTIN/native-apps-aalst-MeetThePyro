@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projectandroid.R
 import com.example.projectandroid.model.Game
 
-
-class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+class GameAdapter : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
     private lateinit var context: Context
     var data = listOf<Game>()
-        set(value){
+        set(value) {
             field = value
             notifyDataSetChanged()
         }
@@ -24,7 +23,7 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
         val res = holder.itemView.resources
         holder.gameName.text = item.name
 
-        //val test = getString(R.string.dev, item.developer);
+        // val test = getString(R.string.dev, item.developer);
 
         holder.gameDev.text = context.getString(R.string.dev, item.developer)
         holder.gamePublisher.text = context.getString(R.string.publisher, item.publisher)
@@ -41,12 +40,12 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     var onItemClick: ((pos: Int, view: View) -> Unit)? = null
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val gameName: TextView = itemView.findViewById(R.id.game_name)
         val gameDev: TextView = itemView.findViewById(R.id.game_dev)
         val gamePublisher: TextView = itemView.findViewById(R.id.game_publisher)
         val appid: TextView = itemView.findViewById(R.id.game_appid)
-        override fun onClick(v: View){
+        override fun onClick(v: View) {
             onItemClick?.invoke(adapterPosition, v)
         }
 
@@ -54,6 +53,4 @@ class GameAdapter: RecyclerView.Adapter<GameAdapter.ViewHolder>() {
             itemView.setOnClickListener(this)
         }
     }
-
-
 }

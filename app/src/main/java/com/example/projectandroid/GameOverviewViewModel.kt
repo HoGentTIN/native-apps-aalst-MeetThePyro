@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.data.network.GameApi
 import com.example.projectandroid.model.Game
@@ -29,8 +28,7 @@ class GameOverviewViewModel(
     private var _appid = String
     private var _request = ""
 
-
-    //private var gameRepository: GameRepository = GameRepository()
+    // private var gameRepository: GameRepository = GameRepository()
 
     // The external immutable LiveData for the response String
     val response: LiveData<GameApiStatus>
@@ -40,7 +38,6 @@ class GameOverviewViewModel(
     val properties: LiveData<List<Game>>
         get() = _properties
 
-
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
 
@@ -48,10 +45,10 @@ class GameOverviewViewModel(
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        //getTop100(_request)
+        // getTop100(_request)
     }
 
-    fun getTop100(request: String)  {
+    fun getTop100(request: String) {
 
         coroutineScope.launch {
             /* while (cm.activeNetwork == null){
@@ -59,28 +56,25 @@ class GameOverviewViewModel(
              }*/
 
             if (cm.activeNetwork == null) {
-                //var test = getTop100FromDatabase()
+                // var test = getTop100FromDatabase()
                 _properties.value = getTop100FromDatabase()
             } else {
                 getTop100FromApi(request)
             }
 
-            //getTop100FromApi(request)
-
+            // getTop100FromApi(request)
         }
     }
 
     private suspend fun getTop100FromDatabase(): List<Game>? {
         return withContext(Dispatchers.IO) {
             var games = database.getAll()
-            //if (games.value == null || games.value!!.isEmpty())
+            // if (games.value == null || games.value!!.isEmpty())
             games
-
         }
     }
 
     private suspend fun getTop100FromApi(request: String) {
-
 
             var getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
             try {
@@ -90,30 +84,21 @@ class GameOverviewViewModel(
                     database.clear()
                     database.insertAll(listResult.values.toList())
 
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         _status.value = GameApiStatus.DONE
                         _properties.value = getTop100FromDatabase()?.toMutableList()
-                        //_properties.value = listResult.values.toList()
+                        // _properties.value = listResult.values.toList()
                     }
 
-
-                    //database.insert(listResult.values.toList().first())
-
-
+                    // database.insert(listResult.values.toList().first())
                 }
 
-
-
-
-                //adapter = GameListAdapter(this, properties.value)
+                // adapter = GameListAdapter(this, properties.value)
             } catch (e: Exception) {
                 val error = e.message
                 _status.value = GameApiStatus.ERROR
-                //_properties.value = ArrayList()
+                // _properties.value = ArrayList()
             }
-
-
-
     }
 
     suspend fun clear() {
@@ -149,7 +134,6 @@ class GameOverviewViewModel(
              })
      }
  */
-
 
     /* private val viewModelJob = SupervisorJob()
      private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
