@@ -1,17 +1,11 @@
 package com.example.projectandroid.data.network
 
-import com.example.projectandroid.model.Game
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.*
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import java.text.SimpleDateFormat
@@ -20,6 +14,11 @@ import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.*
 
 private const val BASE_URL_GAMES = "https://steamspy.com/api.php?request="
 
@@ -34,8 +33,6 @@ private val moshi = Moshi.Builder()
     suspend fun getGames(): List<Game>
 }*/
 
-
-
 object Network {
 
     // Configure retrofit to parse JSON and use coroutines
@@ -46,9 +43,7 @@ object Network {
         .build()
 
     val game = retrofit.create(GameApiService::class.java)
-
 }
-
 
 object NULL_TO_EMPTY_STRING_ADAPTER {
     @FromJson
@@ -60,7 +55,7 @@ object NULL_TO_EMPTY_STRING_ADAPTER {
         return ""
     }
 }
-object DateAdapter{
+object DateAdapter {
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
     @FromJson
     fun fromJson(reader: JsonReader): Date? {
@@ -79,8 +74,7 @@ object DateAdapter{
     }
 }
 
-
-fun unSafeOkHttpClient() : OkHttpClient.Builder {
+fun unSafeOkHttpClient(): OkHttpClient.Builder {
     val okHttpClient = OkHttpClient.Builder()
     try {
         // Create a trust manager that does not validate certificate chains

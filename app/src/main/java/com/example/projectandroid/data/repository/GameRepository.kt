@@ -1,12 +1,7 @@
 package com.example.projectandroid.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.projectandroid.data.network.Network
-import com.example.projectandroid.model.Game
-
 class GameRepository constructor() {
-    //private val webservice: Network = Network
+    // private val webservice: Network = Network
    /* private var _games = MutableLiveData<List<Game>>()
     val games: LiveData<List<Game>>
         get() = _games
@@ -19,8 +14,4 @@ class GameRepository constructor() {
         _response.value = "gelukt " + games.value?.size
 
     }*/
-
-
 }
-
-

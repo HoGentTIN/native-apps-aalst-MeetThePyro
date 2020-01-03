@@ -1,67 +1,43 @@
 package com.example.projectandroid.model
 
-import com.squareup.moshi.Json
-import retrofit2.http.GET
-
-data class GameDetailed(
-    @field:Json(name = "steam_appid")
-    var appid:Int,
-    @field:Json(name = "name")
-    var name:String,
-    var is_free:Boolean,
-    var header_image:String,
-    var website:String,
-    var short_description:String,
-    var price_overview: PriceOverview
-)
-
 data class GameDetailedWrapper(
-    var success:Boolean,
-    @field:Json(name = "data")
-    var game: GameDetailed
-
-
-)
-
-
-data class GameDetailedWrapper2(
     val `data`: Data,
     val success: Boolean
 )
 
 data class Data(
-    //val about_the_game: String,
-    //val achievements: Achievements,
-    //val background: String,
-    //val categories: List<Category>,
-    //val controller_support: String?,
-    //val detailed_description: String,
+    // val about_the_game: String,
+    // val achievements: Achievements,
+    // val background: String,
+    // val categories: List<Category>,
+    // val controller_support: String?,
+    // val detailed_description: String,
     val developers: List<String>?,
-    //val dlc: List<Int>?,
-    //val genres: List<Genre>,
+    // val dlc: List<Int>?,
+    // val genres: List<Genre>,
     val header_image: String,
-    //val is_free: Boolean,
-    //val legal_notice: String?,
-    //val linux_requirements: LinuxRequirements,
-    //val mac_requirements: List<Any>,
-    //val metacritic: Metacritic?,
-    //val movies: List<Movy>?,
+    // val is_free: Boolean,
+    // val legal_notice: String?,
+    // val linux_requirements: LinuxRequirements,
+    // val mac_requirements: List<Any>,
+    // val metacritic: Metacritic?,
+    // val movies: List<Movy>?,
     val name: String,
-    //val package_groups: List<PackageGroup>,
-    //val packages: List<Int>,
-    //val pc_requirements: PcRequirements,
-    //val platforms: Platforms,
+    // val package_groups: List<PackageGroup>,
+    // val packages: List<Int>,
+    // val pc_requirements: PcRequirements,
+    // val platforms: Platforms,
     val price_overview: PriceOverview?,
     val publishers: List<String>?,
-    //val recommendations: Recommendations,
-    //val release_date: ReleaseDate,
-    //val required_age: String,
-    //val screenshots: List<Screenshot>,
+    // val recommendations: Recommendations,
+    // val release_date: ReleaseDate,
+    // val required_age: String,
+    // val screenshots: List<Screenshot>,
     val short_description: String?,
     val steam_appid: Int,
-    //val support_info: SupportInfo,
-    //val supported_languages: String,
-    //val type: String,
+    // val support_info: SupportInfo,
+    // val supported_languages: String,
+    // val type: String,
     val website: String?
 )
 
