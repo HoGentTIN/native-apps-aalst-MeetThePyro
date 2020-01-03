@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
-        android:textColor="@color/colorWarning"/>
+        style="@style/warning"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gameList_view"
