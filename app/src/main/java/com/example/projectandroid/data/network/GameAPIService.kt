@@ -11,15 +11,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 private const val BASE_URL_GAMES = "https://steamspy.com/"
 
 private val moshi = Moshi.Builder()
-    //.add(ResponseGetGamesAdapter())
     .add(KotlinJsonAdapterFactory())
     .build()
 
-//OkhttpClient for building http request url
+// OkhttpClient for building http request url
 private val tmdbClient = OkHttpClient().newBuilder()
     .build()
 
@@ -30,14 +28,10 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL_GAMES)
     .build()
 
-
-interface GameApiService{
+interface GameApiService {
     @GET("api.php?request=top100forever")
-    fun getTop100(@Query("request") request:String): Deferred<Map<String,Game>>
-
+    fun getTop100(@Query("request") request: String): Deferred<Map<String, Game>>
 }
-
-
 
 object GameApi {
     val retrofitService: GameApiService by lazy {

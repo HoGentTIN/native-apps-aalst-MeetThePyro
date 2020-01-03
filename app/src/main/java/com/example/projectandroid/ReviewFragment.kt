@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.review_fragment.reviewText
 
-
 class ReviewFragment : Fragment() {
     companion object {
         fun newInstance() = HomeFragment()
