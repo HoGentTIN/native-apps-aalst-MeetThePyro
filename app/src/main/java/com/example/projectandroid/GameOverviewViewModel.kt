@@ -1,6 +1,5 @@
 package com.example.projectandroid
 
-import android.app.Application
 import android.net.ConnectivityManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +17,6 @@ enum class GameApiStatus { LOADING, ERROR, DONE }
 
 class GameOverviewViewModel(
     val database: GameDatabaseDao,
-    application: Application,
     val cm: ConnectivityManager
 ) : ViewModel() {
     // TODO: Implement the
@@ -86,18 +84,13 @@ class GameOverviewViewModel(
 
                     withContext(Dispatchers.Main) {
                         _status.value = GameApiStatus.DONE
-                        _properties.value = getTop100FromDatabase()?.toMutableList()
-                        // _properties.value = listResult.values.toList()
+                        //_properties.value = getTop100FromDatabase()?.toMutableList()
+                        _properties.value = listResult.values.toList()
                     }
-
-                    // database.insert(listResult.values.toList().first())
                 }
-
-                // adapter = GameListAdapter(this, properties.value)
             } catch (e: Exception) {
                 val error = e.message
                 _status.value = GameApiStatus.ERROR
-                // _properties.value = ArrayList()
             }
     }
 

@@ -107,6 +107,6 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
     }
 
     fun listToString(input: List<String>?): String {
-        return input.toString()!!.removePrefix("[").removeSuffix("]")
+        return input.toString().removePrefix("[").removeSuffix("]")
     }
 }

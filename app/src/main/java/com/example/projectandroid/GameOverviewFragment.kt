@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
-import com.example.projectandroid.model.Game
 import java.net.URL
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
@@ -35,7 +34,6 @@ class GameOverviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as MainActivity).setToolbarTitle("Top 100 Games")
-        var _games: List<Game>
         var _appid: String
         // return inflater.inflate(R.layout.game_overview_fragment, container, false)
         // val binding = DataBindingUtil.inflate<GameOverviewFragmentBinding>(inflater,
@@ -48,7 +46,7 @@ class GameOverviewFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
-        val viewModelFactory = GameOverviewViewModelFactory(dataSource, application, cm)
+        val viewModelFactory = GameOverviewViewModelFactory(dataSource, cm)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(GameOverviewViewModel::class.java)
 
