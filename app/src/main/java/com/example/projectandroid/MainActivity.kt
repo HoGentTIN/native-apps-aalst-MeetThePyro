@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
     lateinit var navView: NavigationView
     lateinit var appid: String
-    var request: String = "top100forever"
+    //var request: String = "top100forever"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

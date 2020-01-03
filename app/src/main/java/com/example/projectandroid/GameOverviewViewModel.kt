@@ -98,7 +98,4 @@ class GameOverviewViewModel(
         viewModelJob.cancel()
     }
 
-    fun setRequest(request: String) {
-        _request = request
-    }
 }

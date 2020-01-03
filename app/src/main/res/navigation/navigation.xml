@@ -11,7 +11,11 @@
         tools:layout="@layout/home_fragment" >
         <action
             android:id="@+id/action_homeFragment_to_gameOverviewFragment"
-            app:destination="@id/gameOverviewFragment" />
+            app:destination="@id/gameOverviewFragment" >
+            <argument
+                android:name="request"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -45,6 +49,10 @@
         <action
             android:id="@+id/action_gameOverviewFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <argument
+            android:name="request"
+            app:argType="string"
+            android:defaultValue='"top100forever"' />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"

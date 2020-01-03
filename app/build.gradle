@@ -8,6 +8,8 @@ apply plugin: 'org.jetbrains.dokka'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs"
+
 android {
     dataBinding {
         enabled = true
