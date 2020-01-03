@@ -13,10 +13,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
+import kotlinx.android.synthetic.main.content_main.myNavHostFragment
 import java.net.URL
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
@@ -77,7 +80,7 @@ class GameOverviewFragment : Fragment() {
             _appid = view.game_appid.text.toString()
             val bundle = Bundle()
             bundle.putString("appid", _appid)
-            (activity as MainActivity).selectGame(_appid)
+            Navigation.findNavController(view).navigate(GameOverviewFragmentDirections.actionGameOverviewFragmentToGameFragment(_appid))
         }
 
         viewModel.properties.observe(viewLifecycleOwner, Observer {

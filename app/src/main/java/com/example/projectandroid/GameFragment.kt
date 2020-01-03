@@ -31,12 +31,18 @@ class GameFragment : Fragment() {
     ): View? {
         (activity as MainActivity).setToolbarTitle("Game")
 
+        var appid = ""
         val binding = GameFragmentBinding.inflate(inflater)
 
         binding.setLifecycleOwner(this)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
-        viewModel.setAppid((activity as MainActivity).appid)
+        arguments?.let {
+            val safeArgs = GameFragmentArgs.fromBundle(it)
+            appid = safeArgs.appid
+        }
+
+        viewModel.setAppid(appid)
 
         binding.gameDetailedViewModel = viewModel
 

@@ -48,15 +48,19 @@
         android:label="GameOverviewFragment" >
         <action
             android:id="@+id/action_gameOverviewFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment" >
+            <argument android:name="appid" />
+        </action>
         <argument
             android:name="request"
             app:argType="string"
-            android:defaultValue='"top100forever"' />
+            android:defaultValue="top100forever" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.projectandroid.GameFragment"
         android:label="game_fragment"
-        tools:layout="@layout/game_fragment" />
+        tools:layout="@layout/game_fragment" >
+        <argument android:name="appid" />
+    </fragment>
 </navigation>

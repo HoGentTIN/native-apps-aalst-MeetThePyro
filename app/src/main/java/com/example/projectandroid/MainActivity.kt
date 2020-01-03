@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var toolbar: Toolbar
     lateinit var navView: NavigationView
-    lateinit var appid: String
-    //var request: String = "top100forever"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,20 +54,4 @@ class MainActivity : AppCompatActivity() {
         toolbar_title.text = title
     }
 
-    fun selectGame(appid: String) {
-        this.appid = appid
-        globalVar = appid
-
-        findNavController(R.id.myNavHostFragment).navigate(R.id.action_gameOverviewFragment_to_gameFragment)
-
-    }
-
-    fun getTheId(): String {
-        return appid
-    }
-
-    // override fun onSupportNavigateUp(): Boolean {
-    //   val navController = this.findNavController(R.id.myNavHostFragment)
-    //   return NavigationUI.navigateUp(navController, drawerLayout)
-    // }
 }
