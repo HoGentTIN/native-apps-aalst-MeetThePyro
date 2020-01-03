@@ -18,6 +18,8 @@ import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
+import kotlinx.android.synthetic.main.game_overview_fragment.gameList_view
+import kotlinx.android.synthetic.main.list_item_games.game_card
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 import java.net.URL
 
@@ -118,6 +120,7 @@ class GameOverviewFragment : Fragment() {
 
         if (cm.activeNetwork != null) {
             gameList_offline.visibility = GONE
+
         } else {
             gameList_offline.visibility = VISIBLE
         }

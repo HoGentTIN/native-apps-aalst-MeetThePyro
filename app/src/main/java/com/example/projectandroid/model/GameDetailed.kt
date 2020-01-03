@@ -1,33 +1,17 @@
 package com.example.projectandroid.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import retrofit2.http.GET
 
-data class GameDetailed(
-    @field:Json(name = "steam_appid")
-    var appid:Int,
-    @field:Json(name = "name")
-    var name:String,
-    var is_free:Boolean,
-    var header_image:String,
-    var website:String,
-    var short_description:String,
-    var price_overview: PriceOverview
-)
+
 
 data class GameDetailedWrapper(
-    var success:Boolean,
-    @field:Json(name = "data")
-    var game: GameDetailed
-
-
-)
-
-
-data class GameDetailedWrapper2(
     val `data`: Data,
     val success: Boolean
 )
+
 
 data class Data(
     //val about_the_game: String,

@@ -3,11 +3,8 @@ package com.example.projectandroid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.projectandroid.data.network.GameApi
 import com.example.projectandroid.data.network.SteamApi
 import com.example.projectandroid.model.Data
-import com.example.projectandroid.model.Game
-import com.example.projectandroid.model.GameDetailed
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

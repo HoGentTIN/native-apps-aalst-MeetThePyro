@@ -1,9 +1,6 @@
 package com.example.projectandroid.data.network
 
-import com.example.projectandroid.model.Game
-import com.example.projectandroid.model.GameDetailed
 import com.example.projectandroid.model.GameDetailedWrapper
-import com.example.projectandroid.model.GameDetailedWrapper2
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -12,7 +9,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL_STEAM = "https://store.steampowered.com/api/"
@@ -44,7 +40,7 @@ interface SteamApiService{
 
 interface SteamApiService{
     @GET("appdetails")
-    fun getGame(@Query("appids") appid:String): Deferred<Map<String, GameDetailedWrapper2>>
+    fun getGame(@Query("appids") appid:String): Deferred<Map<String, GameDetailedWrapper>>
 
 }
 
