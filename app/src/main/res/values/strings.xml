@@ -21,6 +21,7 @@
     <string name="timespan_2weeks">2 Weeks</string>
     <string name="welcome_text">Welcome. Here you can get a list of the top 100 games on steam, both in the last seven days, and forever</string>
     <string name="top_100_btnText">Get Top 100</string>
+    <string name="no_connection_gameList">You are not connected to any network. Using local data. Only the top 100 forever is available without internet. Games will not be shown in the correct order.</string>
 
 
 </resources>

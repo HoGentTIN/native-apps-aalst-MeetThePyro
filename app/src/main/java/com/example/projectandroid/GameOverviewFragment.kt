@@ -7,6 +7,8 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +17,7 @@ import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import com.example.projectandroid.model.Game
+import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 import java.net.URL
 
@@ -41,11 +44,8 @@ class GameOverviewFragment : Fragment() {
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        if (cm.activeNetwork != null) {
-            var test = "test"
-        } else {
-            var test = "test2"
-        }
+
+
 
 
 
@@ -114,6 +114,13 @@ class GameOverviewFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(GameOverviewViewModel::class.java)
         // TODO: Use the ViewModel
+        val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (cm.activeNetwork != null) {
+            gameList_offline.visibility = GONE
+        } else {
+            gameList_offline.visibility = VISIBLE
+        }
 
         /*overview_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
