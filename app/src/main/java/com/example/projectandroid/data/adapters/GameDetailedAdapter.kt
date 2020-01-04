@@ -55,11 +55,16 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
             holder.gamePublisher.text = context.getString(R.string.publisher_missing)
         }
 
-        var _price = item.price_overview?.final_formatted
+        val _price = item.price_overview?.final_formatted
         if (!isEmpty(_price)) {
             holder.gamePrice.text = context.getString(R.string.game_price, item.price_overview?.final_formatted)
         } else {
-            holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.free_unavailable))
+            if (item.is_free){
+                holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.price_free))
+            } else {
+                holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.price_unavailable))
+            }
+
         }
         holder.gameSteamLink.text = context.getString(R.string.steam_link, item.steam_appid.toString())
 

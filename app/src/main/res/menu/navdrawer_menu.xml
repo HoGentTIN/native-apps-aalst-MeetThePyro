@@ -12,14 +12,5 @@
 
     </group>
 
-    <group>
-    <item
-        android:id="@+id/login"
-        android:title="LoginFragmentTesting" />
-    <item
-        android:id="@+id/reviewFragment"
-        android:title="ReviewTesting" />
-    </group>
-
 
 </menu>
