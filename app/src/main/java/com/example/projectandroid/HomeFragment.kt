@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        var request: String = "top100forever"
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
@@ -43,25 +44,27 @@ class HomeFragment : Fragment() {
         if (cm.activeNetwork != null) {
             home_no_network.visibility = GONE
             home_timeSpan_switch.isEnabled = true
-            home_timeSpan_switch.isChecked = (activity as MainActivity).request == "top100in2weeks"
+            // home_timeSpan_switch.isChecked = (activity as MainActivity).request == "top100in2weeks"
+            home_timeSpan_switch.isChecked = request == "top100in2weeks"
         } else {
             home_no_network.visibility = VISIBLE
             home_timeSpan_switch.isChecked = false
             home_timeSpan_switch.isEnabled = false
+            request = "top100forever"
         }
 
         home_timeSpan_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 // The switch is enabled/checked
-                (activity as MainActivity).request = "top100in2weeks"
+                request = "top100in2weeks"
             } else {
                 // The switch is disabled
-                (activity as MainActivity).request = "top100forever"
+                request = "top100forever"
             }
         }
 
         home_getTop_btn.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_homeFragment_to_gameOverviewFragment)
+            view.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGameOverviewFragment(request))
         }
     }
 }

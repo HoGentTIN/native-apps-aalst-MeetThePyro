@@ -14,7 +14,6 @@ import kotlinx.coroutines.withContext
 enum class SteamApiStatus { LOADING, ERROR, DONE }
 
 class GameViewModel : ViewModel() {
-    private val _response = MutableLiveData<String>()
     private val _status = MutableLiveData<SteamApiStatus>()
     private var _appid: String = "218620"
 
@@ -45,11 +44,11 @@ class GameViewModel : ViewModel() {
             // Get the Deferred object for our Retrofit request
             var getPropertiesDeferred = SteamApi.retrofitService.getGame(_appid)
             try {
-                withContext(Dispatchers.IO){
+                withContext(Dispatchers.IO) {
                     var listResult = getPropertiesDeferred.await()
                     var firstGame = listResult.values.first().data
 
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         _status.value = SteamApiStatus.DONE
                         _properties.value = listOf(firstGame)
                     }
@@ -72,5 +71,4 @@ class GameViewModel : ViewModel() {
     fun setAppid(appid: String) {
         _appid = appid
     }
-
 }

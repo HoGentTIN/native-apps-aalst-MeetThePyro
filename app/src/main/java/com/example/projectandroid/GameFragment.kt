@@ -12,9 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameDetailedAdapter
 import com.example.projectandroid.databinding.GameFragmentBinding
 import kotlinx.android.synthetic.main.game_fragment.game_detailed_offline
-import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
-import kotlinx.android.synthetic.main.home_fragment.home_no_network
-import kotlinx.android.synthetic.main.list_item_game_detailed.game_detailed_name
 
 class GameFragment : Fragment() {
 
@@ -31,12 +28,18 @@ class GameFragment : Fragment() {
     ): View? {
         (activity as MainActivity).setToolbarTitle("Game")
 
+        var appid = ""
         val binding = GameFragmentBinding.inflate(inflater)
 
         binding.setLifecycleOwner(this)
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
-        viewModel.setAppid((activity as MainActivity).appid)
+        arguments?.let {
+            val safeArgs = GameFragmentArgs.fromBundle(it)
+            appid = safeArgs.appid
+        }
+
+        viewModel.setAppid(appid)
 
         binding.gameDetailedViewModel = viewModel
 
