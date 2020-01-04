@@ -1,18 +1,16 @@
 package com.example.projectandroid
 
-import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.projectandroid.data.database.GameDatabaseDao
+import com.example.projectandroid.data.repository.GameRepository
 
 class GameOverviewViewModelFactory(
-    private val dataSource: GameDatabaseDao,
-    private val cm: ConnectivityManager
+    private val gameRepository: GameRepository
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(GameOverviewViewModel::class.java)) {
-            return GameOverviewViewModel(dataSource, cm) as T
+            return GameOverviewViewModel(gameRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

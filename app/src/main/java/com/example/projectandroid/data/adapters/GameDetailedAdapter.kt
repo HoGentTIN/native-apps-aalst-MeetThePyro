@@ -59,12 +59,11 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         if (!isEmpty(_price)) {
             holder.gamePrice.text = context.getString(R.string.game_price, item.price_overview?.final_formatted)
         } else {
-            if (item.is_free){
+            if (item.is_free) {
                 holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.price_free))
             } else {
                 holder.gamePrice.text = context.getString(R.string.game_price, context.getString(R.string.price_unavailable))
             }
-
         }
         holder.gameSteamLink.text = context.getString(R.string.steam_link, item.steam_appid.toString())
 

@@ -1,17 +1,48 @@
 package com.example.projectandroid.data.repository
 
-class GameRepository constructor() {
-    // private val webservice: Network = Network
-    /* private var _games = MutableLiveData<List<Game>>()
-    val games: LiveData<List<Game>>
-        get() = _games
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
+import android.net.ConnectivityManager
+import com.example.projectandroid.data.database.GameDatabaseDao
+import com.example.projectandroid.data.network.GameApi
+import com.example.projectandroid.model.Game
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-    suspend fun getGames() {
-        _games.value = Network.game.getGames()
-        _response.value = "gelukt " + games.value?.size
+class GameRepository(
+    val database: GameDatabaseDao,
+    val cm: ConnectivityManager
+) {
+    suspend fun getTop100(request: String): List<Game>? {
+            if (cm.activeNetwork == null) {
+                // var test = getTop100FromDatabase()
+                return getTop100FromDatabase()
+            } else {
+                return getTop100FromApi(request)
+            }
+    }
 
-    }*/
+    private suspend fun getTop100FromDatabase(): List<Game>? {
+        return withContext(Dispatchers.IO) {
+            var games = database.getAll()
+            // if (games.value == null || games.value!!.isEmpty())
+            games
+        }
+    }
+
+    private suspend fun getTop100FromApi(request: String): List<Game>? {
+
+        var getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
+            return withContext(Dispatchers.IO) {
+                // Await the completion of our Retrofit request
+                var listResult = getPropertiesDeferred.await()
+                database.clear()
+                database.insertAll(listResult.values.toList())
+                listResult.values.toList()
+            }
+    }
+
+    suspend fun clear() {
+        withContext(Dispatchers.IO) {
+            database.clear()
+        }
+    }
 }
