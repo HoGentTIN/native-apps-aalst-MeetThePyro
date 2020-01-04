@@ -38,4 +38,8 @@
         tools:layout="@layout/game_fragment" >
         <argument android:name="appid" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.projectandroid.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

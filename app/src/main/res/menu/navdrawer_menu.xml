@@ -6,8 +6,8 @@
             android:title="Home"
             android:id="@id/homeFragment"/>
         <item
-            android:title="Top 100 Games"
-            android:id="@+id/gameOverviewFragment" />
+            android:title="About"
+            android:id="@+id/aboutFragment" />
 
 
     </group>

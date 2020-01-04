@@ -25,5 +25,12 @@
     <string name="game_image">Game Image</string>
     <string name="top_100_title">Top 100 Games | %1$s</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_creator">This application is made by https://github.com/MeetThePyro as a school project for Hogeschool Gent.</string>
+    <string name="about_info">With this application you can fetch the top 100 games of steam using the SteamSpy API (Either over the last 2 weeks or forever), and get details of game using the Steam API.</string>
+    <string name="about">About</string>
+    <string name="about_dev">Developer</string>
+
 
 </resources>
