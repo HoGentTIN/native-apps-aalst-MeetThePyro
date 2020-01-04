@@ -2,7 +2,7 @@ package com.example.projectandroid.data.repository
 
 class GameRepository constructor() {
     // private val webservice: Network = Network
-   /* private var _games = MutableLiveData<List<Game>>()
+    /* private var _games = MutableLiveData<List<Game>>()
     val games: LiveData<List<Game>>
         get() = _games
     private val _response = MutableLiveData<String>()

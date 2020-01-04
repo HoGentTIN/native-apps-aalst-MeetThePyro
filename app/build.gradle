@@ -8,6 +8,8 @@ apply plugin: 'org.jetbrains.dokka'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs"
+
 android {
     dataBinding {
         enabled = true
@@ -97,6 +99,10 @@ dependencies {
     //kotlin-reflect
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
+    // Optional -- Robolectric environment
+    testImplementation 'androidx.test:core:1.2.0'
+    // Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:2.19.0'
 
 }
 

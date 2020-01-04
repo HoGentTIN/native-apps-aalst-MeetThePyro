@@ -13,10 +13,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
-import java.net.URL
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 
@@ -33,7 +34,19 @@ class GameOverviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as MainActivity).setToolbarTitle("Top 100 Games")
+        var request = ""
+
+        arguments?.let {
+            val safeArgs = GameOverviewFragmentArgs.fromBundle(it)
+            request = safeArgs.request
+        }
+
+        val timespan = if (request == "top100in2weeks") {
+            context!!.getString(R.string.timespan_2weeks)
+        } else {
+            context!!.getString(R.string.timepsan_forever)
+        }
+        (activity as MainActivity).setToolbarTitle(context!!.getString(R.string.top_100_title, timespan))
         var _appid: String
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -45,21 +58,12 @@ class GameOverviewFragment : Fragment() {
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
         val viewModelFactory = GameOverviewViewModelFactory(dataSource, cm)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(GameOverviewViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(GameOverviewViewModel::class.java)
 
         binding.gameViewModel = viewModel
 
-        var request = (activity as MainActivity).request
-        if (request == "top100forever") {
-            (activity as MainActivity).setToolbarTitle("Top 100 Games | Forever")
-        } else if (request == "top100in2weeks") {
-            (activity as MainActivity).setToolbarTitle("Top 100 Games | 2 Weeks")
-        } else {
-            (activity as MainActivity).setToolbarTitle("Error")
-        }
-
-        viewModel.setRequest((activity as MainActivity).request)
-        viewModel.getTop100((activity as MainActivity).request)
+        viewModel.getTop100(request)
 
         val adapter = GameAdapter()
         binding.gameListView.adapter = adapter
@@ -69,7 +73,7 @@ class GameOverviewFragment : Fragment() {
             _appid = view.game_appid.text.toString()
             val bundle = Bundle()
             bundle.putString("appid", _appid)
-            (activity as MainActivity).selectGame(_appid)
+            Navigation.findNavController(view).navigate(GameOverviewFragmentDirections.actionGameOverviewFragmentToGameFragment(_appid))
         }
 
         viewModel.properties.observe(viewLifecycleOwner, Observer {
