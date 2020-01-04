@@ -21,10 +21,7 @@ class GameOverviewViewModel(
 ) : ViewModel() {
     // TODO: Implement the
 
-    private val _response = MutableLiveData<String>()
     private val _status = MutableLiveData<GameApiStatus>()
-    private var _appid = String
-    private var _request = ""
 
     // private var gameRepository: GameRepository = GameRepository()
 
@@ -74,7 +71,7 @@ class GameOverviewViewModel(
 
                     withContext(Dispatchers.Main) {
                         _status.value = GameApiStatus.DONE
-                        //_properties.value = getTop100FromDatabase()?.toMutableList()
+                        // _properties.value = getTop100FromDatabase()?.toMutableList()
                         _properties.value = listResult.values.toList()
                     }
                 }
@@ -97,5 +94,4 @@ class GameOverviewViewModel(
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

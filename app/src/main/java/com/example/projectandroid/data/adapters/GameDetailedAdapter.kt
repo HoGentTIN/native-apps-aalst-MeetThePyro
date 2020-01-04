@@ -25,7 +25,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        //val res = holder.itemView.resources
+        // val res = holder.itemView.resources
         holder.gameName.text = item.name
         if (!isEmpty(item.short_description)) {
             holder.gameDesc.text = item.short_description

@@ -12,9 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.projectandroid.data.adapters.GameDetailedAdapter
 import com.example.projectandroid.databinding.GameFragmentBinding
 import kotlinx.android.synthetic.main.game_fragment.game_detailed_offline
-import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
-import kotlinx.android.synthetic.main.home_fragment.home_no_network
-import kotlinx.android.synthetic.main.list_item_game_detailed.game_detailed_name
 
 class GameFragment : Fragment() {
 

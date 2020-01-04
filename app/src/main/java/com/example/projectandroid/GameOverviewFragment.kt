@@ -15,12 +15,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
-import kotlinx.android.synthetic.main.content_main.myNavHostFragment
-import java.net.URL
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
 
@@ -43,8 +40,8 @@ class GameOverviewFragment : Fragment() {
             val safeArgs = GameOverviewFragmentArgs.fromBundle(it)
             request = safeArgs.request
         }
-        var timespan = ""
-        timespan = if (request == "top100in2weeks") {
+
+        val timespan = if (request == "top100in2weeks") {
             context!!.getString(R.string.timespan_2weeks)
         } else {
             context!!.getString(R.string.timepsan_forever)
@@ -66,16 +63,6 @@ class GameOverviewFragment : Fragment() {
 
         binding.gameViewModel = viewModel
 
-        //ar request = (activity as MainActivity).request
-        /*if (request == "top100forever") {
-            (activity as MainActivity).setToolbarTitle("Top 100 Games | Forever")
-        } else if (request == "top100in2weeks") {
-            (activity as MainActivity).setToolbarTitle("Top 100 Games | 2 Weeks")
-        } else {
-            (activity as MainActivity).setToolbarTitle("Error")
-        }*/
-
-        //viewModel.getTop100((activity as MainActivity).request)
         viewModel.getTop100(request)
 
         val adapter = GameAdapter()
