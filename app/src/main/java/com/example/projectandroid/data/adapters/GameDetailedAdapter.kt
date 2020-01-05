@@ -24,7 +24,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //set the views to the correct data
+        // set the views to the correct data
         val item = data[position]
         holder.gameName.text = item.name
         if (!isEmpty(item.short_description)) {
@@ -84,7 +84,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         return ViewHolder(view)
     }
 
-    //get all the views into the viewholder
+    // get all the views into the viewholder
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val gameName: TextView = itemView.findViewById(R.id.game_detailed_name)
         val gameDesc: TextView = itemView.findViewById(R.id.game_detailed_desc)

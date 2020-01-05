@@ -12,7 +12,7 @@ class GameRepository(
     val cm: ConnectivityManager
 ) {
     suspend fun getTop100(request: String): List<Game>? {
-        //if the device is not connected to a network
+        // if the device is not connected to a network
         return if (cm.activeNetwork == null) {
             getTop100FromDatabase()
         } else {
@@ -31,7 +31,7 @@ class GameRepository(
 
         val getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
 
-        //Try to get the details from the API, and if that fails, return null
+        // Try to get the details from the API, and if that fails, return null
         return try {
             withContext(Dispatchers.IO) {
                 // Await the completion of our Retrofit request

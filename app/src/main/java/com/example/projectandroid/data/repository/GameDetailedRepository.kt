@@ -10,7 +10,7 @@ class GameDetailedRepository {
     suspend fun getGameDetails(appid: String): List<Data>? {
         val getPropertiesDeferred = SteamApi.retrofitService.getGame(appid)
 
-        //Try to get the details from the API, and if that fails, return null
+        // Try to get the details from the API, and if that fails, return null
         return try {
             withContext(Dispatchers.IO) {
 
