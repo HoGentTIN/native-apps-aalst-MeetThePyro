@@ -5,7 +5,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.data.network.GameApi
+import com.example.projectandroid.data.network.GameApiService
 import com.example.projectandroid.data.network.SteamApi
+import com.example.projectandroid.data.network.SteamApiService
 import com.example.projectandroid.model.Game
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
@@ -17,6 +19,13 @@ import org.junit.Test
 import java.io.IOException
 
 class ApiTests {
+    private lateinit var gameApi: GameApiService
+    private lateinit var steamApi: SteamApiService
+    @Before
+    fun get_api_services(){
+        gameApi = GameApi.retrofitService
+        steamApi = SteamApi.retrofitService
+    }
 
     @Test
     fun testsWork() {
@@ -24,10 +33,10 @@ class ApiTests {
     }
 
     @Test
-    fun gameApi_gives_100_games() {
+    fun gameApi_returns_list_with_size_100() {
         runBlocking {
-            val api = GameApi.retrofitService
-            val response = api.getTop100("top100forever")
+            //val api = GameApi.retrofitService
+            val response = gameApi.getTop100("top100forever")
             Assert.assertEquals(100, response.await().values.size)
 
         }
@@ -36,8 +45,7 @@ class ApiTests {
     @Test
     fun gameApi_returns_objects_of_class_game(){
         runBlocking {
-            val api = GameApi.retrofitService
-            val response = api.getTop100("top100forever")
+            val response = gameApi.getTop100("top100forever")
             Assert.assertEquals(Game::class.java, response.await().values.first()::class.java)
         }
 
@@ -46,8 +54,7 @@ class ApiTests {
     @Test
     fun steamApi_gives_game_with_correct_id() {
         runBlocking {
-            val api = SteamApi.retrofitService
-            val response = api.getGame("440")
+            val response = steamApi.getGame("440")
             Assert.assertEquals(440, response.await().values.first().data.steam_appid)
         }
     }
