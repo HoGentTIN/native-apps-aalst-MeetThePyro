@@ -1,6 +1,5 @@
 package com.example.projectandroid.data.repository
 
-import com.example.projectandroid.SteamApiStatus
 import com.example.projectandroid.data.network.SteamApi
 import com.example.projectandroid.model.Data
 import kotlinx.coroutines.Dispatchers

@@ -44,7 +44,7 @@ class GameViewModel : ViewModel() {
         coroutineScope.launch {
 
             // Get the Deferred object for our Retrofit request
-            gameDetailedRepository.getGameDetails(_appid)
+            _properties.value = gameDetailedRepository.getGameDetails(_appid)
         }
     }
 
