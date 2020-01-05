@@ -12,12 +12,12 @@ class GameRepository(
     val cm: ConnectivityManager
 ) {
     suspend fun getTop100(request: String): List<Game>? {
-            if (cm.activeNetwork == null) {
-                // var test = getTop100FromDatabase()
-                return getTop100FromDatabase()
-            } else {
-                return getTop100FromApi(request)
-            }
+        return if (cm.activeNetwork == null) {
+            // var test = getTop100FromDatabase()
+            getTop100FromDatabase()
+        } else {
+            getTop100FromApi(request)
+        }
     }
 
     private suspend fun getTop100FromDatabase(): List<Game>? {

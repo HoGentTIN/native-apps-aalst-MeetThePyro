@@ -1,9 +1,20 @@
 package com.example.projectandroid
 
+import androidx.room.Room
+import androidx.test.platform.app.InstrumentationRegistry
+import com.example.projectandroid.data.database.GameDatabase
+import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.data.network.GameApi
 import com.example.projectandroid.data.network.SteamApi
+import com.example.projectandroid.model.Game
+import junit.framework.Assert.assertTrue
+import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Assert
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import java.io.IOException
 
 class MyTest {
 
@@ -25,4 +36,5 @@ class MyTest {
         val response = api.getGame("440")
         Assert.assertNotNull(response)
     }
+
 }
