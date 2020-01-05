@@ -6,9 +6,9 @@ import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.model.Game
 import java.io.IOException
-import junit.framework.Assert
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
