@@ -13,8 +13,6 @@ import kotlinx.coroutines.launch
 class GameOverviewViewModel(
     private var gameRepository: GameRepository
 ) : ViewModel() {
-    // TODO: Implement the
-
     private val _properties = MutableLiveData<List<Game>>()
     val properties: LiveData<List<Game>>
         get() = _properties
