@@ -42,15 +42,15 @@ class GameOverviewFragment : Fragment() {
             request = safeArgs.request
         }
 
-        val timespan = if (request == "top100in2weeks") {
+        val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val timespan = if (request == "top100in2weeks" && cm.activeNetwork != null) {
             context!!.getString(R.string.timespan_2weeks)
         } else {
             context!!.getString(R.string.timepsan_forever)
         }
         (activity as MainActivity).setToolbarTitle(context!!.getString(R.string.top_100_title, timespan))
         var _appid: String
-
-        val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val binding = GameOverviewFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
