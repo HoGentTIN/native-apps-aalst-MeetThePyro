@@ -9,13 +9,13 @@ import java.lang.Exception
 
 class GameDetailedRepository {
     suspend fun getGameDetails(appid: String): List<Data>? {
-        var getPropertiesDeferred = SteamApi.retrofitService.getGame(appid)
+        val getPropertiesDeferred = SteamApi.retrofitService.getGame(appid)
 
         return try {
             withContext(Dispatchers.IO) {
 
-                var listResult = getPropertiesDeferred.await()
-                var firstGame = listResult.values.first().data
+                val listResult = getPropertiesDeferred.await()
+                val firstGame = listResult.values.first().data
                 listOf(firstGame)
 
             }

@@ -67,7 +67,7 @@ class GameDetailedAdapter : RecyclerView.Adapter<GameDetailedAdapter.ViewHolder>
         }
         holder.gameSteamLink.text = context.getString(R.string.steam_link, item.steam_appid.toString())
 
-        var _discount = item.price_overview?.discount_percent
+        val _discount = item.price_overview?.discount_percent
         if (_discount != null && _discount > 0) {
             holder.gamePriceDiscount.visibility = VISIBLE
             holder.gamePriceDiscount.text = context.getString(R.string.game_discount, _discount)

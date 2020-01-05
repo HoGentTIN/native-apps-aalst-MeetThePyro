@@ -14,10 +14,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main.toolbar_title
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        var globalVar = ""
-    }
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navController: NavController
