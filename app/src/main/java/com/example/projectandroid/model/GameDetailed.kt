@@ -16,7 +16,7 @@ data class Data(
     // val dlc: List<Int>?,
     // val genres: List<Genre>,
     val header_image: String,
-    // val is_free: Boolean,
+    val is_free: Boolean,
     // val legal_notice: String?,
     // val linux_requirements: LinuxRequirements,
     // val mac_requirements: List<Any>,

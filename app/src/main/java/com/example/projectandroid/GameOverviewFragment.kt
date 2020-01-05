@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.projectandroid.data.adapters.GameAdapter
 import com.example.projectandroid.data.database.GameDatabase
+import com.example.projectandroid.data.repository.GameRepository
 import com.example.projectandroid.databinding.GameOverviewFragmentBinding
 import kotlinx.android.synthetic.main.game_overview_fragment.gameList_offline
 import kotlinx.android.synthetic.main.list_item_games.view.game_appid
@@ -56,7 +57,8 @@ class GameOverviewFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
-        val viewModelFactory = GameOverviewViewModelFactory(dataSource, cm)
+        val gameRepository = GameRepository(dataSource, cm)
+        val viewModelFactory = GameOverviewViewModelFactory(gameRepository)
 
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(GameOverviewViewModel::class.java)

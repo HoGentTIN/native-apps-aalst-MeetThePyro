@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.projectandroid.data.network.SteamApi
+import com.example.projectandroid.data.repository.GameDetailedRepository
+import com.example.projectandroid.data.repository.GameRepository
 import com.example.projectandroid.model.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +19,7 @@ class GameViewModel : ViewModel() {
     private val _status = MutableLiveData<SteamApiStatus>()
     private var _appid: String = "218620"
 
-    // private var gameRepository: GameRepository = GameRepository()
+    private var gameDetailedRepository: GameDetailedRepository = GameDetailedRepository()
 
     // The external immutable LiveData for the response String
     val response: LiveData<SteamApiStatus>
@@ -42,20 +44,7 @@ class GameViewModel : ViewModel() {
         coroutineScope.launch {
 
             // Get the Deferred object for our Retrofit request
-            var getPropertiesDeferred = SteamApi.retrofitService.getGame(_appid)
-            try {
-                withContext(Dispatchers.IO) {
-                    var listResult = getPropertiesDeferred.await()
-                    var firstGame = listResult.values.first().data
-
-                    withContext(Dispatchers.Main) {
-                        _status.value = SteamApiStatus.DONE
-                        _properties.value = listOf(firstGame)
-                    }
-                }
-            } catch (e: Exception) {
-                _status.value = SteamApiStatus.ERROR
-            }
+            gameDetailedRepository.getGameDetails(_appid)
         }
     }
 

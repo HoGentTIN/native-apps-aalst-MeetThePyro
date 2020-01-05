@@ -29,7 +29,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface GameApiService {
-    @GET("api.php?request=top100forever")
+    @GET("api.php")
     fun getTop100(@Query("request") request: String): Deferred<Map<String, Game>>
 }
 
