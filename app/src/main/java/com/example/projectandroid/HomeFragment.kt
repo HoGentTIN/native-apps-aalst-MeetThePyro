@@ -21,8 +21,6 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,8 +35,6 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         var request: String = "top100forever"
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         if (cm.activeNetwork != null) {

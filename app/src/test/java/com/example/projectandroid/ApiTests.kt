@@ -28,7 +28,6 @@ class ApiTests {
     @Test
     fun gameApi_returns_list_with_size_100() {
         runBlocking {
-            // val api = GameApi.retrofitService
             val response = gameApi.getTop100("top100forever")
             Assert.assertEquals(100, response.await().values.size)
         }
