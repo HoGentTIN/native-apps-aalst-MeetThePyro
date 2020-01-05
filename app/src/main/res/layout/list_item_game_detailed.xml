@@ -156,13 +156,13 @@
 
         <TextView
             android:id="@+id/game_detailed_steamLink"
+            style="@style/link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            tools:text="Link to steam"
-            style="@style/link"
             app:layout_constraintStart_toStartOf="@+id/game_detailed_price"
-            app:layout_constraintTop_toBottomOf="@+id/game_detailed_price" />
+            app:layout_constraintTop_toBottomOf="@+id/game_details_link_steam_lbl"
+            tools:text="Link to steam" />
 
         <TextView
             android:id="@+id/game_detailed_sale"
@@ -173,6 +173,15 @@
             tools:text="onSale?"
             app:layout_constraintStart_toEndOf="@+id/game_detailed_price"
             app:layout_constraintTop_toTopOf="@+id/game_detailed_price" />
+
+        <TextView
+            android:id="@+id/game_details_link_steam_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/steam_link_lbl"
+            app:layout_constraintStart_toStartOf="@+id/game_detailed_price"
+            app:layout_constraintTop_toBottomOf="@+id/game_detailed_price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
