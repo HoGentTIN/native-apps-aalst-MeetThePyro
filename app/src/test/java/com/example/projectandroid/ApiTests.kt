@@ -1,9 +1,5 @@
 package com.example.projectandroid
 
-import androidx.room.Room
-import androidx.test.platform.app.InstrumentationRegistry
-import com.example.projectandroid.data.database.GameDatabase
-import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.data.network.GameApi
 import com.example.projectandroid.data.network.GameApiService
 import com.example.projectandroid.data.network.SteamApi
@@ -11,18 +7,15 @@ import com.example.projectandroid.data.network.SteamApiService
 import com.example.projectandroid.model.Game
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Assert
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.io.IOException
 
 class ApiTests {
     private lateinit var gameApi: GameApiService
     private lateinit var steamApi: SteamApiService
     @Before
-    fun get_api_services(){
+    fun get_api_services() {
         gameApi = GameApi.retrofitService
         steamApi = SteamApi.retrofitService
     }
@@ -35,20 +28,18 @@ class ApiTests {
     @Test
     fun gameApi_returns_list_with_size_100() {
         runBlocking {
-            //val api = GameApi.retrofitService
+            // val api = GameApi.retrofitService
             val response = gameApi.getTop100("top100forever")
             Assert.assertEquals(100, response.await().values.size)
-
         }
     }
 
     @Test
-    fun gameApi_returns_objects_of_class_game(){
+    fun gameApi_returns_objects_of_class_game() {
         runBlocking {
             val response = gameApi.getTop100("top100forever")
             Assert.assertEquals(Game::class.java, response.await().values.first()::class.java)
         }
-
     }
 
     @Test
@@ -58,5 +49,4 @@ class ApiTests {
             Assert.assertEquals(440, response.await().values.first().data.steam_appid)
         }
     }
-
 }
