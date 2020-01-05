@@ -10,17 +10,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-enum class SteamApiStatus { LOADING, ERROR, DONE }
 
 class GameViewModel : ViewModel() {
-    private val _status = MutableLiveData<SteamApiStatus>()
     private var _appid: String = "218620"
 
     private var gameDetailedRepository: GameDetailedRepository = GameDetailedRepository()
-
-    // The external immutable LiveData for the response String
-    val response: LiveData<SteamApiStatus>
-        get() = _status
 
     private val _properties = MutableLiveData<List<Data>>()
     val properties: LiveData<List<Data>>
