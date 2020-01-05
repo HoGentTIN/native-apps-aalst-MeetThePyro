@@ -5,19 +5,19 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.projectandroid.data.database.GameDatabase
 import com.example.projectandroid.data.database.GameDatabaseDao
 import com.example.projectandroid.model.Game
-import java.io.IOException
-import junit.framework.Assert.assertTrue
+import junit.framework.Assert
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import java.io.IOException
 
 class DbTest {
     private lateinit var gameDao: GameDatabaseDao
     private lateinit var db: GameDatabase
 
-    // @get:Rule
-    // var instantTaskExecutorRule = InstantTaskExecutorRule()
+    //@get:Rule
+    //var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun createDb() {
@@ -47,7 +47,7 @@ class DbTest {
         runBlocking {
             gameDao.insert(game)
             val allGames = gameDao.getAll()
-            assertTrue(allGames.contains(game))
+            Assert.assertTrue(allGames.contains(game))
         }
     }
 }
