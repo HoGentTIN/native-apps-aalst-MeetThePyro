@@ -16,9 +16,6 @@ class DbTest {
     private lateinit var gameDao: GameDatabaseDao
     private lateinit var db: GameDatabase
 
-    // @get:Rule
-    // var instantTaskExecutorRule = InstantTaskExecutorRule()
-
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
