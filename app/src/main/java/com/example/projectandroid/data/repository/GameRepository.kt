@@ -31,13 +31,17 @@ class GameRepository(
     private suspend fun getTop100FromApi(request: String): List<Game>? {
 
         var getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
-            return withContext(Dispatchers.IO) {
+        return try {
+            withContext(Dispatchers.IO) {
                 // Await the completion of our Retrofit request
                 var listResult = getPropertiesDeferred.await()
                 database.clear()
                 database.insertAll(listResult.values.toList())
                 listResult.values.toList()
             }
+        }catch (e:Error){
+            null
+        }
     }
 
     suspend fun clear() {

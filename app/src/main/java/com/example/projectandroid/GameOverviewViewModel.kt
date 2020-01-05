@@ -10,18 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-enum class GameApiStatus { LOADING, ERROR, DONE }
-
 class GameOverviewViewModel(
     private var gameRepository: GameRepository
 ) : ViewModel() {
     // TODO: Implement the
-
-    private val _status = MutableLiveData<GameApiStatus>()
-
-    // The external immutable LiveData for the response String
-    val response: LiveData<GameApiStatus>
-        get() = _status
 
     private val _properties = MutableLiveData<List<Game>>()
     val properties: LiveData<List<Game>>
