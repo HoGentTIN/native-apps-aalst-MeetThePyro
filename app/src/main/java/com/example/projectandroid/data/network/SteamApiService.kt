@@ -13,8 +13,6 @@ import retrofit2.http.Query
 
 private const val BASE_URL_STEAM = "https://store.steampowered.com/api/"
 
-private var _gameid = ""
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

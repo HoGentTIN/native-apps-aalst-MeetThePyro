@@ -13,7 +13,6 @@ class GameRepository(
 ) {
     suspend fun getTop100(request: String): List<Game>? {
         return if (cm.activeNetwork == null) {
-            // var test = getTop100FromDatabase()
             getTop100FromDatabase()
         } else {
             getTop100FromApi(request)
@@ -22,24 +21,23 @@ class GameRepository(
 
     private suspend fun getTop100FromDatabase(): List<Game>? {
         return withContext(Dispatchers.IO) {
-            var games = database.getAll()
-            // if (games.value == null || games.value!!.isEmpty())
+            val games = database.getAll()
             games
         }
     }
 
     private suspend fun getTop100FromApi(request: String): List<Game>? {
 
-        var getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
+        val getPropertiesDeferred = GameApi.retrofitService.getTop100(request)
         return try {
             withContext(Dispatchers.IO) {
                 // Await the completion of our Retrofit request
-                var listResult = getPropertiesDeferred.await()
+                val listResult = getPropertiesDeferred.await()
                 database.clear()
                 database.insertAll(listResult.values.toList())
                 listResult.values.toList()
             }
-        }catch (e:Error){
+        } catch (e: Error) {
             null
         }
     }
