@@ -37,7 +37,7 @@ class GameRepository(
                 database.insertAll(listResult.values.toList())
                 listResult.values.toList()
             }
-        }catch (e:Error){
+        } catch (e: Error) {
             null
         }
     }
