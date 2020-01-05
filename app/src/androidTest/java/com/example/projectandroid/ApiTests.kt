@@ -5,7 +5,6 @@ import com.example.projectandroid.data.network.GameApiService
 import com.example.projectandroid.data.network.SteamApi
 import com.example.projectandroid.data.network.SteamApiService
 import com.example.projectandroid.model.Game
-import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before

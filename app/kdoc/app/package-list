@@ -1,0 +1,9 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+com.example.projectandroid
+com.example.projectandroid.data.adapters
+com.example.projectandroid.data.database
+com.example.projectandroid.data.network
+com.example.projectandroid.data.repository
+com.example.projectandroid.model
